@@ -10,13 +10,13 @@
         
     }
     .nav-active{
-           color:red; 
+        //    color:red; 
            &::after {
                content:'';
                width:85%;
                height: 5px;
                background: $color-1;
-               border-radius: 2px;
+               border-radius: 10px;
                position:absolute;
                bottom: 1px;
                left:50%;

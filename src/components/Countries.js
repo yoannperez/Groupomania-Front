@@ -39,9 +39,9 @@ const Countries = () => {
       <div className="sort-container">
         <input type="range" min="1" max="250" value={rangeValue} onChange={(e) => setRangeValue(e.target.value)} />
         <ul>
-          {radios.map((radio) => {
+          {radios.map((radio, index) => {
             return (
-              <li key={radio}>
+              <li key={`${radio}-${index}`}>
                 <input type="radio" value={radio} id={radio} checked={radio === selectedRadio} onChange={(e) => setSelectedRadio(e.target.value)} />
                 <label htmlFor={radio}>{radio}</label>
               </li>
