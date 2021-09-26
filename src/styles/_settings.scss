@@ -13,11 +13,12 @@ $color-4: rgb(32, 35, 42);
   padding: 0;
 }
 body {
-  padding: 1em 1em;  
+  padding: 0em 0em;  
   margin: 0.4rem auto;
   max-width: 1296px;
   font-family: $font-1;
   color: $color-3;
+  // background-color: blue;
   background-color: $color-2;
 }
 li {
