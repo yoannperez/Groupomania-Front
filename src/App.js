@@ -8,7 +8,6 @@ import News from "./pages/News";
 import NotFound from "./pages/NotFound";
 
 
-
 const App = () => {
   return (
     <BrowserRouter>
@@ -23,5 +22,7 @@ const App = () => {
     </BrowserRouter>
   );
 };
+
+
 
 export default App;
