@@ -1,4 +1,6 @@
 https://www.youtube.com/watch?v=hh4jRVGrLhc
+npm start
+
 
 # Getting Started with Create React App
 
