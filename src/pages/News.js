@@ -1,8 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Article from "../components/Article";
-import Logo from "../components/Logo";
-import Navigation from "../components/Navigation";
+
 
 require("dotenv").config();
 
