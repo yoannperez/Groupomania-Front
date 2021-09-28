@@ -47,9 +47,7 @@ const News = () => {
   // ---------------    OBJECT RETURNED TO VIRTUAL DOM    ------------------
   return (
     <div className="news-container">
-      <Navigation />
-      <Logo />
-      <h1>News</h1>
+      <h1>Feed</h1>
 
       <form onSubmit={(e) => handleSubmit(e)}>
         <input onChange={(e) => setUserId(e.target.value)} type="text" placeholder="Nom" value={UserId}></input>
