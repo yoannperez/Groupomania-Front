@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Article from "../components/Article";
-
+import authService from "../services/auth.service";
 
 require("dotenv").config();
 
@@ -10,6 +10,9 @@ const News = () => {
   const [UserId, setUserId] = useState("");
   const [content, setTextData] = useState("");
   const [error, setError] = useState(false);
+  const user = authService.getCurrentUser()
+
+  
 
   useEffect(() => {
     getData();
@@ -17,8 +20,16 @@ const News = () => {
   // -----------      Get Datas From API Function     ------------------
   const getData = () => {
     // axios.get(process.env.API_ADRESS:process.env.API_ADRESS)
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' +user.token;
+    console.log("toto : " + user.token);
     axios.get("http://localhost:3000/api/posts/find/").then((res) => setNewsData(res.data));
+
   };
+// console.log(user.token);
+ 
+  console.log('====================================');
+  console.log(user.token);
+  console.log('====================================');
   // -----------   END OF:    Get Datas From API Function   -------------
 
   // -----------------      SEND Datas to API     ------------------------

@@ -8,6 +8,9 @@ export default class Profile extends Component {
       currentUser: AuthService.getCurrentUser()
     };
   }
+// if currrentuser ?? else return 
+// history.push => login.
+
 
   render() {
     const { currentUser } = this.state;
