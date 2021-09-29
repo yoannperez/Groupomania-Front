@@ -9,15 +9,26 @@ import Register from "./components/register.component";
 import Home from "./pages/Home";
 import Profile from "./components/profile.component";
 import Feed from "./pages/News";
-import BoardUser from "./components/board-user.component";
 import Game from "./pages/Game";
 
-
 const user = AuthService.getCurrentUser();
-console.log(user);
+
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.logOut = this.logOut.bind(this);
 
+    // this.state = {
+    //   showModeratorBoard: false,
+    //   showAdminBoard: false,
+    //   currentUser: undefined,
+    // };
+  }
+
+  componentDidMount() {
+    const user = AuthService.getCurrentUser();
+  }
 
   logOut() {
     AuthService.logout();
@@ -30,13 +41,15 @@ class App extends Component {
           <Link to={"/"} className="navbar-brand">
             Groupomania
           </Link>
-          <div className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <a href="/login" className="nav-link" onClick={this.logOut}>
-                LogOut
-              </a>
-            </li>
-          </div>
+          {user && (
+            <div className="navbar-nav mr-auto">
+              <li className="nav-item">
+                <a href="/login" className="nav-link" onClick={this.logOut}>
+                  LogOut
+                </a>
+              </li>
+            </div>
+          )}
 
           <div className="navbar-nav ml-auto">
             <li className="nav-item">
@@ -72,7 +85,7 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/feed" component={Feed} />
-            <Route path="/user" component={BoardUser} />
+            
           </Switch>
         </div>
       </div>
