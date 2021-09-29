@@ -12,10 +12,11 @@ const News = () => {
   const [error, setError] = useState(false);
   const user = authService.getCurrentUser()
 
-  
+
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // -----------      Get Datas From API Function     ------------------
   const getData = () => {
@@ -25,11 +26,7 @@ const News = () => {
     axios.get("http://localhost:3000/api/posts/find/").then((res) => setNewsData(res.data));
 
   };
-// console.log(user.token);
- 
-  console.log('====================================');
-  console.log(user.token);
-  console.log('====================================');
+
   // -----------   END OF:    Get Datas From API Function   -------------
 
   // -----------------      SEND Datas to API     ------------------------

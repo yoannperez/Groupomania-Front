@@ -5,12 +5,11 @@ export default class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: AuthService.getCurrentUser()
+      currentUser: AuthService.getCurrentUser(),
     };
   }
-// if currrentuser ?? else return 
-// history.push => login.
-
+  // if currrentuser ?? else return
+  // history.push => login.
 
   render() {
     const { currentUser } = this.state;
@@ -24,26 +23,25 @@ export default class Profile extends Component {
           </h3>
         </header>
         <ul>
-        <li className="nav-item">
-                <a href="/login" className="nav-link" onClick={this.logOut}>
-                  LogOut
-                </a>
-              </li>
+          <li className="nav-item">
+            <a href="/login" className="nav-link" onClick={this.logOut}>
+              LogOut
+            </a>
+          </li>
         </ul>
         <p>
-          <strong>Token:</strong>{" "}
-          {currentUser.token.substring(0, 20)} ...{" "}
-          {currentUser.token.substr(currentUser.token.length - 20)}
+          <strong>Token:</strong> {currentUser.token.substring(0, 20)} ... {currentUser.token.substr(currentUser.token.length - 20)}
         </p>
         <p>
-          <strong>Id:</strong>{" "}
-          {currentUser.userId}
+          <strong>Id:</strong> {currentUser.userId}
         </p>
         <p>
-          <strong>Email:</strong>{" "}
-          {currentUser.email}
+          <strong>Email:</strong> {currentUser.email}
         </p>
-        
+        {/* <p>
+          <strong>Image :</strong>{" "}
+          {currentUser.imageUrl}
+        </p> */}
       </div>
     );
   }
