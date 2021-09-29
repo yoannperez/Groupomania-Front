@@ -1,0 +1,48 @@
+.gradientButton {
+  font-size: 1em;
+  line-height: 1.5;
+  position: relative;
+  display: inline;
+  padding: em(13) em(20);
+  margin: 0 auto;
+  text-shadow: 0 0 1px black;
+  background: $color-big_button;
+  border-radius: 50px;
+  color: white;
+  border: none;
+  box-shadow: 0 5px 5px rgba($color-shadow, 0.3);
+  text-align: center;
+  transform: scale(1);
+  outline: -webkit-focus-ring-color auto 0px;
+// ==> supression d'une bordure sur certains navigateurs
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.200);
+    border-radius: 50px;
+    opacity: 0;
+    transform: scale(1);
+    z-index: -1;
+    transition: opacity ease-in-out 50ms;
+  }
+  // Changement de la couleur de fond par opacité pour faciliter l'affichage sur des périphériques plus anciens
+  &:hover {
+    cursor:pointer;
+    box-shadow: 0 5px 5px rgba($color-shadow, 0.8);
+    transform: scale(1.01);
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+// Padding du bouton pour les menu ==> classe modificateur du padding pour les pages menu
+.bigButton--menu{
+  padding: em(13) em(50)
+}
+
+// ==> Passage à _fonctions pour la détermination des marges en em et rem en fonction de la marge désirée en fonction de la taille en pixels

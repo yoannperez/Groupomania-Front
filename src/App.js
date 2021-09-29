@@ -13,7 +13,6 @@ import Game from "./pages/Game";
 
 const user = AuthService.getCurrentUser();
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -52,27 +51,39 @@ class App extends Component {
           )}
 
           <div className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <Link to={"/login"} className="nav-link">
-                Login
-              </Link>
-            </li>
+            {!user && (
+              <li className="nav-item">
+                <Link to={"/login"} className="nav-link">
+                  Login
+                </Link>
+              </li>
+            )}
 
-            <li className="nav-item">
-              <Link to={"/register"} className="nav-link">
-                Register
-              </Link>
-            </li>
+            {!user && (
+              <li className="nav-item">
+                <Link to={"/register"} className="nav-link">
+                  Register
+                </Link>
+              </li>
+            )}
+
+            {user && (
+              
             <li className="nav-item">
               <Link to={"/game"} className="nav-link">
                 Game
               </Link>
             </li>
+            )}
+            {user && (
+              
             <li className="nav-item">
               <Link to={"/feed"} className="nav-link">
                 Feed
               </Link>
             </li>
+            )}
+
           </div>
         </nav>
 
@@ -85,7 +96,6 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/feed" component={Feed} />
-            
           </Switch>
         </div>
       </div>

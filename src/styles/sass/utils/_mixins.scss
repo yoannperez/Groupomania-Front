@@ -1,0 +1,43 @@
+// Ombre des boites
+@mixin box-shadows {
+    box-shadow: 0 0px 10px $color-shadow;
+}
+// Icone favoris
+@mixin favorite{
+    .button {
+        display: block;
+        background: none;
+        overflow: hidden;
+        border: none;
+        .fa-stack {
+          width: 2em;
+        }
+        i {
+          color: $color-favorite;
+          font-size: 0.8em;
+          padding: 15px 0;
+          
+        }
+        // => Création et animation de l'icone coeur favori
+        // => Conflit avec le validateur de W3C et warning de sass
+        .animate {
+          background: $heart-color;
+          // background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          opacity: 0;
+        }
+        &:hover {
+          cursor: pointer;
+          .animate {
+            opacity: 1;
+            transition: opacity ease-in-out $heart-speed;
+          }
+          .fa-inverse {
+            opacity: 0;
+            transition: opacity ease-out $heart-speed;
+          }
+        }
+      }
+}
+// => _footer

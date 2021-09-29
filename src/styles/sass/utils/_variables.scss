@@ -1,0 +1,52 @@
+// Temps de chargement du loading spinner
+$Loading-time: 3000ms;
+
+// Ici, modification des breakpoints pour les Media queries
+$breakpoints: (
+  mobile: 576px,
+  tablets: 992px,
+  computer: 1200px,
+);
+
+// Couleurs du site
+
+$color-primary: #9356dc;
+$color-secondary: #ff79da;
+$color-third: #99e2d0;
+//backgrounds
+$bkg-dark: #eeeeee;
+$bkg-light: #f8f8f8;
+
+
+//Shadow-color
+$color-shadow: grey;
+
+// Définition du gradient de bouton
+$gradient: linear-gradient($color-secondary, $color-primary);
+
+// Couleur du gros bouton
+$color-big_button: #{$gradient};
+
+// Couleur initial icone favoris (coeur)
+$color-favorite:black;
+//Paramètres d'animation de l'icone favoris
+$heart-speed: 0.3s;
+$heart-color: linear-gradient(to bottom right, $color-primary, $color-secondary);
+
+//Configuration de l'animation des items de menu
+// Décalage de départ
+$start-shift: 20px;
+//Menu titre
+$menu-title-duration: 1000ms;
+$group-delay: 500ms;
+//Configuration des cartes de menus
+$fade-duration: 1000ms;
+$fade-delay: 200ms;
+
+//Temps d'animation de l'onglet checked
+$check-time:800ms;
+
+
+// ==> _Base
+
+
