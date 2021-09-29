@@ -10,15 +10,15 @@ const Game = () => {
   const user = AuthService.getCurrentUser();
   const history = useHistory();
   const [userData, setUserData] = useState([]);
-  useEffect(() => {
 
+  
+  useEffect(() => {
+    if (user) {
       const getUserData = () => {
         axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
         axios.get("http://localhost:3000/api/users/" + user.userId).then((res) => setUserData(res.data));
       };
-
-
-    getUserData();
+    getUserData();}
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -38,7 +38,7 @@ const Game = () => {
   // if (condition===1) {
       history.push("/");
       // window.location.reload();
-      return (<div>Redirection</div>);
+      return null;
   } else {
   
 
