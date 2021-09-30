@@ -3,7 +3,9 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import AuthService from "../services/auth.service";
-import { useHistory } from "react-router";
+import { NavLink } from "react-router-dom";
+import logo from "../assets/icon.svg"
+
 
 const required = value => {
   if (!value) {
@@ -58,7 +60,7 @@ export default class Login extends Component {
       AuthService.login(this.state.username, this.state.password).then(
         () => {
           // this.props.history.push("/profile");
-          this.props.history.push("/feed");
+          // this.props.history.push("/feed");
           window.location.reload();
         },
         error => {
@@ -87,7 +89,7 @@ export default class Login extends Component {
       <div className="col-md-12">
         <div className="card card-container">
           <img
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+            src={logo}
             alt="profile-img"
             className="profile-img-card"
           />
@@ -149,6 +151,8 @@ export default class Login extends Component {
               }}
             />
           </Form>
+          
+          <NavLink to={"/register"}> S'enregistrer </NavLink>
         </div>
       </div>
     );

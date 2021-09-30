@@ -3,8 +3,9 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
-
 import AuthService from "../services/auth.service";
+import { NavLink } from "react-router-dom";
+import logo from "../assets/icon.svg"
 
 const required = value => {
   if (!value) {
@@ -125,7 +126,7 @@ export default class Register extends Component {
       <div className="col-md-12">
         <div className="card card-container">
           <img
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+            src={logo}
             alt="profile-img"
             className="profile-img-card"
           />
@@ -201,7 +202,10 @@ export default class Register extends Component {
               }}
             />
           </Form>
+          <NavLink to={"/"}> Se connecter </NavLink>
+        
         </div>
+        
       </div>
     );
   }
