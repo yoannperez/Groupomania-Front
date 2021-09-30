@@ -10,11 +10,10 @@ import AuthService from "../services/auth.service";
 const Home = () => {
   return (
     <div className="home">
-        {/* <Navigation/>
-        <Logo/> */}
+        
         <h3>Accueil</h3>
-        {/* <Login />
-        <Register /> */}
+        <Login />
+        <Register />
     </div>
   );
 };
