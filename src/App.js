@@ -11,8 +11,6 @@ import NotFound from "./pages/NotFound";
 
 const user = AuthService.getCurrentUser();
 
-console.log(user);
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +26,7 @@ class App extends Component {
   }
 
   render() {
-    if (user) {
+    if (user) { // If user as a Token
       return (
         <div className="wrapper">
           <nav className="navigationContainer">
@@ -58,7 +56,7 @@ class App extends Component {
           </switch>
         </div>
       );
-    } else {
+    } else { // If user doesn't have a Token
       return (
         <div className="wrapper">
           
@@ -79,6 +77,7 @@ class App extends Component {
               <Route component={NotFound} />
             </Switch>
           </div>
+          <div className="footerBar"> <h3> Le réseau qui nous rassemble</h3></div>
         </div>
       );
     }

@@ -26,23 +26,21 @@ const News = () => {
   const getData = () => {
     // axios.get(process.env.API_ADRESS:process.env.API_ADRESS)
     axios.defaults.headers.common['Authorization'] = 'Bearer ' +user.token;
-    console.log("toto : " + user.token);
     axios.get("http://localhost:3000/api/posts/find/").then((res) => setNewsData(res.data));
   };
   // -----------   END OF:    Get Datas From API Function   -------------
 
-  
+
   // -----------------      SEND Datas to API     ------------------------
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (content.length < 10) {
+    if (content.length < 2) {
       setError(true);
     } else {
       axios
         .post("http://localhost:3000/api/posts/new", {
           text: content,
-          // "UserId":UserId ==> == à ce qui suit
-          UserId,
+          UserId: user.userId,
         })
         .then(() => {
           setError(false);
@@ -67,11 +65,10 @@ const News = () => {
         <h1>Feed</h1>
   
         <form onSubmit={(e) => handleSubmit(e)}>
-          <input onChange={(e) => setUserId(e.target.value)} type="text" placeholder="Nom" value={UserId}></input>
           {/* // -- style={{border: error ? "1px solid red" :"1px solid #61dafb"}}  ==> Teste l'erreur*/}
-          <textarea style={{ border: error ? "1px solid red" : "1px solid #61dafb" }} onChange={(e) => setTextData(e.target.value)} placeholder="Message" value={content}></textarea>
+          <textarea style={{ border: error ? "1px solid red" : "1px solid #61dafb" }} onChange={(e) => setTextData(e.target.value)} placeholder="Créer un post" value={content}></textarea>
           {/* // Message donné si la condition n'est pas  bonne */}
-          {error && <p> Veuillez écrire un texte plus long que 10 caracts</p>}
+          {error && <p> Veuillez écrire un texte plus long que 2 caracts</p>}
           <input type="submit" value="Envoyer" />
         </form>
         <ul>

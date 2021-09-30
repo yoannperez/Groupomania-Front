@@ -7,8 +7,8 @@ $color-2: #f7f7f7;
 $color-3: #282c34;
 $color-4: rgb(32, 35, 42);
 
-$groupomania-red: #E0676E;
-$groupomania-blue: #062C53;
+$groupomania-red: #e0676e;
+$groupomania-blue: #062c53;
 
 * {
   box-sizing: border-box;
@@ -17,7 +17,7 @@ $groupomania-blue: #062C53;
 }
 
 body {
-  padding: 0em 0em;  
+  padding: 0em 0em;
   margin: 0rem auto;
   max-width: 1296px;
   font-family: $font-1;
@@ -35,4 +35,17 @@ a {
 }
 a:visited {
   color: $color-3;
+}
+
+.footerBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 60px;
+  color: white;
+  background-color: rgba($groupomania-blue, 0.8);
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
