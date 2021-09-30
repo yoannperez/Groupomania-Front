@@ -9,6 +9,7 @@ import Register from "./components/register.component";
 import Profile from "./components/profile.component";
 import Feed from "./pages/News";
 import Game from "./pages/Game";
+import NotFound from "./pages/NotFound";
 
 const user = AuthService.getCurrentUser();
 
@@ -28,6 +29,8 @@ class App extends Component {
     AuthService.logout();
   }
 
+
+
   render() {
     if (user) {
       console.log("coucou");
@@ -35,7 +38,7 @@ class App extends Component {
       return (
         <div>
           <nav className="navbar navbar-expand navbar-dark bg-dark">
-            <Link to={"/"} className="navbar-brand">
+            <Link to={"/feed"} className="navbar-brand">
               Groupomania
             </Link>
             {user && (
@@ -58,12 +61,11 @@ class App extends Component {
 
       // <Route exact path="/feed" component={Feed} />
     } else {
-      console.log("Fuck you");
-
+      
       return (
         <div>
           <nav className="navbar navbar-expand navbar-dark bg-dark">
-            <Link to={"/"} className="navbar-brand">
+            <Link to={"/feed"} className="navbar-brand">
               Groupomania
             </Link>
             {user && (
@@ -102,6 +104,7 @@ class App extends Component {
               <Route exact path="/game" component={Game} />
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/feed" component={Feed} />
+              <Route component={NotFound}/>
             </Switch>
           </div>
         </div>
