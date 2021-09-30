@@ -27,74 +27,48 @@ class App extends Component {
     AuthService.logout();
   }
 
-
-
   render() {
     if (user) {
-      console.log("coucou");
-
       return (
-        <div>
-          <nav className="navbar navbar-expand navbar-dark bg-dark">
-            <Link to={"/feed"} className="navbar-brand">
+        <div className="wrapper">
+          <nav className="navigationContainer">
+            <Link to={"/feed"} className="brandName">
               Groupomania
             </Link>
-            {user && (
-              <div className="navbar-nav mr-auto">
-                <li className="nav-item">
-                  <a href="/" className="nav-link" onClick={this.logOut}>
-                    LogOut
-                  </a>
-                </li>
-              </div>
-            )}
+            <div className="userNav">
+              {user && (
+                <div className="navbar-nav">
+                  <li className="nav-item">
+                    <a href="/" className="nav-link" onClick={this.logOut}>
+                      LogOut
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a href="/" className="nav-link">
+                      Profil
+                    </a>
+                  </li>
+                </div>
+              )}
+            </div>
           </nav>
           <switch>
             <Redirect to="/feed" />
             <Route path="/feed" component={Feed} />
-            {/* <Route exact path="/" component={Login} /> */}
           </switch>
         </div>
       );
-
-      // <Route exact path="/feed" component={Feed} />
     } else {
-      
       return (
-        <div>
-          <nav className="navbar navbar-expand navbar-dark bg-dark">
-            <Link to={"/feed"} className="navbar-brand">
+        <div className="wrapper">
+          
+          <nav className="navigationContainer">
+            <Link to={"/feed"} className="brandName">
               Groupomania
             </Link>
-            {user && (
-              <div className="navbar-nav mr-auto">
-                <li className="nav-item">
-                  <a href="/" className="nav-link" onClick={this.logOut}>
-                    LogOut
-                  </a>
-                </li>
-              </div>
-            )}
-
-            <div className="navbar-nav ml-auto">
-              {user && (
-                <li className="nav-item">
-                  <Link to={"/game"} className="nav-link">
-                    Game
-                  </Link>
-                </li>
-              )}
-              {user && (
-                <li className="nav-item">
-                  <Link to={"/feed"} className="nav-link">
-                    Feed
-                  </Link>
-                </li>
-              )}
-            </div>
           </nav>
 
-          <div className="container mt-3">
+          <div>
             <Switch>
               {/* <Route exact path={["/", "/home"]} component={Home} /> */}
               <Route exact path="/" component={Login} />
@@ -102,7 +76,7 @@ class App extends Component {
               <Route exact path="/game" component={Game} />
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/feed" component={Feed} />
-              <Route component={NotFound}/>
+              <Route component={NotFound} />
             </Switch>
           </div>
         </div>

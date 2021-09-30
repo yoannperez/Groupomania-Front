@@ -1,26 +1,60 @@
-.navigation{
-    margin: 50px 0;
+.navigationContainer {
+  background-color: rgba($groupomania-blue, 0.8);
+  margin: 0px 0;
+  display: flex;
+  justify-content: space-between;
+  vertical-align: middle;
+  color: white;
+
+  .brandName {
+    // color: white;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 1.5rem;
+  }
+
+  .navbar-item {
+    color: salmon;
     display: flex;
+    align-content: center;
+    vertical-align: middle;
+    a {
+      text-transform: uppercase;
+      border: 2px solid white;
 
-    a{
-        margin: 10px;
-        padding: 10px;
-        position:relative;
+      color: white;
+      margin: 10px;
+      padding: 10px;
+      position: relative;
+      border-radius: 10px;
+    }
+  }
+  .userNav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .navbar-nav {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+    & a {
+      border: 1px solid white;
+      line-height: 1em;
+    }
+    & a:hover{
+        color: $groupomania-red;
+        border-color: $groupomania-red;
+    }
+  }
+  a {
+    text-transform: uppercase;
+    color: white;
+    margin: 10px;
+    padding: 5px;
+    position: relative;
+    border-radius: 10px;
+  }
+  
 
-        
-    }
-    .nav-active{
-        //    color:red; 
-           &::after {
-               content:'';
-               width:85%;
-               height: 5px;
-               background: $color-1;
-               border-radius: 10px;
-               position:absolute;
-               bottom: 1px;
-               left:50%;
-               transform: translateX(-50%);
-           }
-    }
+  
 }

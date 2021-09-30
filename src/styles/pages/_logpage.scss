@@ -1,0 +1,19 @@
+.logContainer{
+    height: 100vh;
+    width: 100vw;
+    background: url("../../assets/Login-background.png");
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 50px;
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+
+}
