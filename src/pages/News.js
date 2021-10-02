@@ -66,7 +66,7 @@ const News = () => {
   
         <form onSubmit={(e) => handleSubmit(e)}>
           {/* // -- style={{border: error ? "1px solid red" :"1px solid #61dafb"}}  ==> Teste l'erreur*/}
-          <textarea style={{ border: error ? "1px solid red" : "1px solid #61dafb" }} onChange={(e) => setTextData(e.target.value)} placeholder="Créer un post{Truc}" value={content}></textarea>
+          <textarea style={{ border: error ? "1px solid red" : "1px solid #61dafb" }} onChange={(e) => setTextData(e.target.value)} placeholder="Que voulez-vous dire ?" value={content}></textarea>
           {/* // Message donné si la condition n'est pas  bonne */}
           {error && <p> Veuillez écrire un texte plus long que 2 caracts</p>}
           <input type="submit" value="Envoyer" />
@@ -85,10 +85,6 @@ const News = () => {
       </div>
     );
   }
-
-
-
-
   // -----------    END OF: OBJECT SEND TO VIRTUAL DOM    ----------
 };
 

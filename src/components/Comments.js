@@ -67,7 +67,7 @@ const Comments = (article) => {
       </ul>
       <form onSubmit={(e) => handleSubmit(e)}>
         {/* // -- style={{border: error ? "1px solid red" :"1px solid #61dafb"}}  ==> Teste l'erreur*/}
-        <textarea style={{ border: error ? "1px solid red" : "1px solid #61dafb" }} onChange={(e) => setTextData(e.target.value)} placeholder="Dites quelque chose..." value={content}></textarea>
+        <textarea style={{ border: error ? "1px solid red" : "1px solid #61dafb" }} onChange={(e) => setTextData(e.target.value)} placeholder="Ecrivez un commentaire ..." value={content}></textarea>
         {/* // Message donné si la condition n'est pas  bonne */}
         {error && <p> Veuillez écrire un texte plus long que 2 caracts</p>}
         <input type="submit" value="Envoyer" />
