@@ -62,15 +62,17 @@ const News = () => {
     
     return (
       <div className="news-container">
-        <h1>Feed</h1>
+        <h1>Feed Les actualités</h1>
   
         <form onSubmit={(e) => handleSubmit(e)}>
           {/* // -- style={{border: error ? "1px solid red" :"1px solid #61dafb"}}  ==> Teste l'erreur*/}
-          <textarea style={{ border: error ? "1px solid red" : "1px solid #61dafb" }} onChange={(e) => setTextData(e.target.value)} placeholder="Créer un post" value={content}></textarea>
+          <textarea style={{ border: error ? "1px solid red" : "1px solid #61dafb" }} onChange={(e) => setTextData(e.target.value)} placeholder="Créer un post{Truc}" value={content}></textarea>
           {/* // Message donné si la condition n'est pas  bonne */}
           {error && <p> Veuillez écrire un texte plus long que 2 caracts</p>}
           <input type="submit" value="Envoyer" />
         </form>
+
+
         <ul>
           {newsData
             .sort((a, b) => b.id - a.id)
@@ -78,6 +80,8 @@ const News = () => {
               <Article key={post.id} article={post} />
             ))}
         </ul>
+
+
       </div>
     );
   }

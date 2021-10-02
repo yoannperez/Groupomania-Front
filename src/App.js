@@ -77,7 +77,7 @@ class App extends Component {
               <Route component={NotFound} />
             </Switch>
           </div>
-          <div className="footerBar"> <h3> Le réseau qui nous rassemble</h3></div>
+          <div className="footerBar"> <h3> Le réseau qui nous ressemble et nous rassemble</h3></div>
         </div>
       );
     }
