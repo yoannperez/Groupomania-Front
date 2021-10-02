@@ -5,7 +5,7 @@ import AuthService from "./services/auth.service";
 import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Profile from "./components/profile.component";
-import Feed from "./pages/News";
+import Feed from "./pages/Feed";
 import Game from "./pages/Game";
 import NotFound from "./pages/NotFound";
 

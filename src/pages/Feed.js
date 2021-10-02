@@ -6,7 +6,7 @@ import authService from "../services/auth.service";
 
 require("dotenv").config();
 
-const News = () => {
+const Feed = () => {
   const [newsData, setNewsData] = useState([]);
   const [UserId, setUserId] = useState("");
   const [content, setTextData] = useState("");
@@ -88,4 +88,4 @@ const News = () => {
   // -----------    END OF: OBJECT SEND TO VIRTUAL DOM    ----------
 };
 
-export default News;
+export default Feed;
