@@ -1,9 +1,9 @@
 import axios from "axios";
 
 require('dotenv').config()
-const API_URL = process.env.REACT_APP_API_ADRESS + "/api/auth/";
+const API_URL = process.env.REACT_APP_API_ADRESS + "/api/users/";
 
-class AuthService {
+class UserService {
   login(email, password) {
     return axios
       .post(API_URL + "signin", {
@@ -31,9 +31,9 @@ class AuthService {
     });
   }
 
-  getCurrentUser() {
-    return JSON.parse(localStorage.getItem('user'));;
+  getCurrentUser(email, password) {
+    
   }
 }
 
-export default new AuthService();
+export default new UserService();

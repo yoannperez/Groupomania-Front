@@ -4,7 +4,8 @@ import { useHistory } from "react-router-dom";
 import Article from "../components/Article";
 import authService from "../services/auth.service";
 
-require("dotenv").config();
+require('dotenv').config()
+
 
 const Feed = () => {
   const [newsData, setNewsData] = useState([]);
@@ -24,7 +25,7 @@ const Feed = () => {
   const getData = () => {
     // axios.get(process.env.API_ADRESS:process.env.API_ADRESS)
     axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
-    axios.get("http://localhost:3000/api/posts/find/").then((res) => setNewsData(res.data));
+    axios.get(process.env.REACT_APP_API_ADRESS+ "/api/posts/find/").then((res) => setNewsData(res.data));
   };
   // -----------   END OF:    Get Datas From API Function   -------------
 
@@ -35,7 +36,7 @@ const Feed = () => {
       setError(true);
     } else {
       axios
-        .post("http://localhost:3000/api/posts/new", {
+        .post(process.env.REACT_APP_API_ADRESS + "/api/posts/new", {
           text: content,
           UserId: user.userId,
         })

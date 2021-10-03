@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import CommentComp from "./CommentComp";
 import authService from "../services/auth.service";
 import { useHistory } from "react-router-dom";
+require('dotenv').config()
 
 const Comments = (article) => {
   const [commentData, setNewsData] = useState([]);
@@ -23,7 +24,7 @@ const Comments = (article) => {
   const getData = () => {
     // axios.get(process.env.API_ADRESS:process.env.API_ADRESS)
     // axios.defaults.headers.common['Authorization'] = 'Bearer ' +user.token;
-    axios.get("http://localhost:3000/api/comments/" + article.comment).then((res) => {
+    axios.get(process.env.REACT_APP_API_ADRESS + "/api/comments/" + article.comment).then((res) => {
       setNewsData(res.data);
     });
   };
@@ -36,7 +37,7 @@ const Comments = (article) => {
       setError(true);
     } else {
       axios
-        .post("http://localhost:3000/api/comments/", {
+        .post(process.env.REACT_APP_API_ADRESS + "/api/comments/", {
           commentaire: content,
           UserId: user.userId,
           PostId: article.comment

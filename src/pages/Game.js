@@ -3,6 +3,9 @@ import { React, useEffect, useState } from "react";
 import AuthService from "../services/auth.service";
 import { useHistory } from "react-router-dom";
 
+require('dotenv').config()
+
+
 const Game = () => {
   const user = AuthService.getCurrentUser();
   const history = useHistory();
@@ -12,7 +15,7 @@ const Game = () => {
     if (user) {
       const getUserData = () => {
         axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
-        axios.get("http://localhost:3000/api/users/" + user.userId).then((res) => setUserData(res.data));
+        axios.get(process.env.REACT_APP_API_ADRESS + "/api/users/" + user.userId).then((res) => setUserData(res.data));
       };
       getUserData();
     }

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import DeletePost from "./DeletePost";
 import authService from "../services/auth.service";
-
 import Comments from "./Comments";
+require('dotenv').config()
 
 const Article = ({ article }) => {
   const user = authService.getCurrentUser();
@@ -33,7 +33,7 @@ const Article = ({ article }) => {
     const data = {
       text: editedText ? editedText : article.text,
     };
-    axios.put("http://localhost:3000/api/posts/" + article.id, data);
+    axios.put(process.env.REACT_APP_API_ADRESS + "/api/posts/" + article.id, data);
     setIsEditing(false);
   };
   // END OF : ------------    MODIFY POST LOGIC   ----------------

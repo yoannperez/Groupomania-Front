@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import authService from "../services/auth.service";
-
 import DeleteComment from "./DeleteComment";
+require('dotenv').config()
 
 const CommentComp = (comment) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -31,7 +31,7 @@ const CommentComp = (comment) => {
       commentaire: editedText ? editedText : comment.comment.commentaire,
     };
 
-    axios.put("http://localhost:3000/api/comments/" + comment.comment.id, data);
+    axios.put(process.env.REACT_APP_API_ADRESS+ "/api/comments/" + comment.comment.id, data);
     setIsEditing(false);
   };
   // END OF : ------------    MODIFY POST LOGIC   ----------------

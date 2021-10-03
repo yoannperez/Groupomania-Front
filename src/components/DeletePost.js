@@ -1,9 +1,10 @@
 import axios from "axios";
 import React from "react";
+require('dotenv').config()
 
 const DeletePost = ({ id }) => {
   const handleDelete = () => {
-    axios.delete("http://localhost:3000/api/posts/" + id);
+    axios.delete(process.env.REACT_APP_API_ADRESS+ "/api/posts/" + id);
     setTimeout(() => {
       window.location.reload();
     }, 1000);
