@@ -25,6 +25,8 @@ class App extends Component {
     AuthService.logout();
   }
 
+  
+
   render() {
     if (user) { // If user as a Token
       return (
