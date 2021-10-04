@@ -23,7 +23,6 @@ const Feed = () => {
   }, []);
   // -----------      Get Datas From API Function     ------------------
   const getData = () => {
-    // axios.get(process.env.API_ADRESS:process.env.API_ADRESS)
     axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
     axios.get(process.env.REACT_APP_API_ADRESS+ "/api/posts/find/").then((res) => setNewsData(res.data));
   };

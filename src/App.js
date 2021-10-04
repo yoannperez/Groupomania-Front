@@ -8,8 +8,11 @@ import Profile from "./components/profile.component";
 import Feed from "./pages/Feed";
 import Game from "./pages/Game";
 import NotFound from "./pages/NotFound";
+import userInfo from "./services/user.service"
+
 
 const user = AuthService.getCurrentUser();
+
 
 class App extends Component {
   constructor(props) {
@@ -24,8 +27,8 @@ class App extends Component {
   logOut() {
     AuthService.logout();
   }
-
   
+ 
 
   render() {
     if (user) { // If user as a Token
