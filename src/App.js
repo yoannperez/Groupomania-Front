@@ -8,11 +8,9 @@ import Profile from "./components/profile.component";
 import Feed from "./pages/Feed";
 import Game from "./pages/Game";
 import NotFound from "./pages/NotFound";
-import userInfo from "./services/user.service"
-
+import userInfo from "./services/user.service";
 
 const user = AuthService.getCurrentUser();
-
 
 class App extends Component {
   constructor(props) {
@@ -27,11 +25,10 @@ class App extends Component {
   logOut() {
     AuthService.logout();
   }
-  
- 
 
   render() {
-    if (user) { // If user as a Token
+    if (user) {
+      // If user as a Token
       return (
         <div className="wrapper">
           <nav className="navigationContainer">
@@ -47,7 +44,7 @@ class App extends Component {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a href="/" className="nav-link">
+                    <a href="/game" className="nav-link">
                       Profil
                     </a>
                   </li>
@@ -55,16 +52,18 @@ class App extends Component {
               )}
             </div>
           </nav>
-          <switch>
-            <Redirect to="/feed" />
+          <Switch>
+            {/* <Redirect to="/feed" /> */}
             <Route path="/feed" component={Feed} />
-          </switch>
+            <Route exact path="/game" component={Game} />
+            <Route exact path="/profile" component={Profile} />
+          </Switch>
         </div>
       );
-    } else { // If user doesn't have a Token
+    } else {
+      // If user doesn't have a Token
       return (
         <div className="wrapper">
-          
           <nav className="navigationContainer">
             <Link to={"/feed"} className="brandName">
               Groupomania
@@ -82,7 +81,10 @@ class App extends Component {
               <Route component={NotFound} />
             </Switch>
           </div>
-          <div className="footerBar"> <h3> Le réseau qui nous ressemble et nous rassemble</h3></div>
+          <div className="footerBar">
+            {" "}
+            <h3> Le réseau qui nous ressemble et nous rassemble</h3>
+          </div>
         </div>
       );
     }
