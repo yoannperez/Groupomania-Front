@@ -74,6 +74,7 @@ const Feed = () => {
               <Article key={post.id} article={post} />
             ))}
         </ul>
+        
       </div>
     );
   }

@@ -7,6 +7,8 @@ import Register from "./components/register.component";
 import Profile from "./components/profile.component";
 import Feed from "./pages/Feed";
 import Game from "./pages/Game";
+import banner from "./assets/icon-left-font-monochrome-white.svg";
+
 import NotFound from "./pages/NotFound";
 // import userInfo from "./services/user.service";
 
@@ -32,8 +34,8 @@ class App extends Component {
       return (
         <div className="wrapper">
           <nav className="navigationContainer">
-            <Link to={"/feed"} className="brandName">
-              Groupomania
+            <Link to={"/"} className="brandName">
+              <img src={banner} style={{ height: "30px" }} alt="banner image" className="banner-img" />
             </Link>
             <div className="userNav">
               {user && (
@@ -52,14 +54,16 @@ class App extends Component {
               )}
             </div>
           </nav>
+            
           <Switch>
             {/* <Redirect to="/feed" /> */}
+            {/* <Route exact path="/" component={Feed} /> */}
             <Route exact path="/" component={Feed} />
-            <Route exact path="/feed" component={Feed} />
             <Route exact path="/game" component={Game} />
             <Route exact path="/profile" component={Profile} />
             <Route component={Feed} />
           </Switch>
+          <footer>Coucoucou</footer>
         </div>
       );
     } else {
@@ -67,8 +71,8 @@ class App extends Component {
       return (
         <div className="wrapper">
           <nav className="navigationContainer">
-            <Link to={"/feed"} className="brandName">
-              Groupomania
+            <Link to={"/"} className="brandName">
+              <img src={banner} style={{ height: "30px" }} alt="banner image" className="banner-img" />
             </Link>
           </nav>
 
@@ -76,7 +80,7 @@ class App extends Component {
             <Switch>
               {/* <Route exact path={["/", "/home"]} component={Home} /> */}
               <Route exact path="/" component={Login} />
-              
+
               <Route exact path="/register" component={Register} />
               {/* <Route exact path="/game" component={Game} />
               <Route exact path="/profile" component={Profile} />
@@ -88,7 +92,9 @@ class App extends Component {
             {" "}
             <h3> Le réseau qui nous ressemble et nous rassemble</h3>
           </div>
+<footer>Coucoucou</footer>
         </div>
+        
       );
     }
   }
