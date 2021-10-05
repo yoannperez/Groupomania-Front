@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route, Link,  } from "react-router-dom";
+import { Switch, Route, Link, Redirect } from "react-router-dom";
 import "./styles/index.scss";
 import AuthService from "./services/auth.service";
 import Login from "./components/login.component";
@@ -58,6 +58,7 @@ class App extends Component {
             <Route exact path="/feed" component={Feed} />
             <Route exact path="/game" component={Game} />
             <Route exact path="/profile" component={Profile} />
+            <Route component={Feed} />
           </Switch>
         </div>
       );
@@ -75,11 +76,12 @@ class App extends Component {
             <Switch>
               {/* <Route exact path={["/", "/home"]} component={Home} /> */}
               <Route exact path="/" component={Login} />
+              
               <Route exact path="/register" component={Register} />
-              <Route exact path="/game" component={Game} />
+              {/* <Route exact path="/game" component={Game} />
               <Route exact path="/profile" component={Profile} />
-              <Route exact path="/feed" component={Feed} />
-              <Route component={NotFound} />
+              <Route exact path="/feed" component={Feed} /> */}
+              <Route component={Login} />
             </Switch>
           </div>
           <div className="footerBar">
