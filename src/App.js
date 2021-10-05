@@ -63,7 +63,7 @@ class App extends Component {
             <Route exact path="/profile" component={Profile} />
             <Route component={Feed} />
           </Switch>
-          <footer>Coucoucou</footer>
+         
         </div>
       );
     } else {
@@ -90,9 +90,9 @@ class App extends Component {
           </div>
           <div className="footerBar">
             {" "}
-            <h3> Le réseau qui nous ressemble et nous rassemble</h3>
+            <h3> Le réseau qui vous ressemble et qui nous rassemble</h3>
           </div>
-<footer>Coucoucou</footer>
+
         </div>
         
       );
