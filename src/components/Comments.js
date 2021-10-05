@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import CommentComp from "./CommentComp";
 import authService from "../services/auth.service";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 require('dotenv').config()
 
 const Comments = (article) => {
@@ -12,8 +12,8 @@ const Comments = (article) => {
   const [content, setTextData] = useState("");
   const [error, setError] = useState(false);
   const user = authService.getCurrentUser();
-  const history = useHistory();
-  const [UserId, setUserId] = useState("");
+  // const history = useHistory();
+  // const [UserId, setUserId] = useState("");
 
   useEffect(() => {
     getData();
@@ -44,7 +44,7 @@ const Comments = (article) => {
         })
         .then(() => {
           setError(false);
-          setUserId("");
+          // setUserId("");
           setTextData("");
           getData();
         });

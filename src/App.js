@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { Switch, Route, Link,  } from "react-router-dom";
 import "./styles/index.scss";
 import AuthService from "./services/auth.service";
 import Login from "./components/login.component";
@@ -8,7 +8,7 @@ import Profile from "./components/profile.component";
 import Feed from "./pages/Feed";
 import Game from "./pages/Game";
 import NotFound from "./pages/NotFound";
-import userInfo from "./services/user.service";
+// import userInfo from "./services/user.service";
 
 const user = AuthService.getCurrentUser();
 
@@ -18,9 +18,9 @@ class App extends Component {
     this.logOut = this.logOut.bind(this);
   }
 
-  componentDidMount() {
-    const user = AuthService.getCurrentUser();
-  }
+  // componentDidMount() {
+  //   const user = AuthService.getCurrentUser();
+  // }
 
   logOut() {
     AuthService.logout();
@@ -54,7 +54,8 @@ class App extends Component {
           </nav>
           <Switch>
             {/* <Redirect to="/feed" /> */}
-            <Route path="/feed" component={Feed} />
+            <Route exact path="/" component={Feed} />
+            <Route exact path="/feed" component={Feed} />
             <Route exact path="/game" component={Game} />
             <Route exact path="/profile" component={Profile} />
           </Switch>

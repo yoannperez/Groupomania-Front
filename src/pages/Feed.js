@@ -9,7 +9,7 @@ require('dotenv').config()
 
 const Feed = () => {
   const [newsData, setNewsData] = useState([]);
-  const [UserId, setUserId] = useState("");
+  // const [UserId, setUserId] = useState("");
   const [content, setTextData] = useState("");
   const [error, setError] = useState(false);
   const user = authService.getCurrentUser();
@@ -41,7 +41,7 @@ const Feed = () => {
         })
         .then(() => {
           setError(false);
-          setUserId("");
+          // setUserId("");
           setTextData("");
           getData();
         });

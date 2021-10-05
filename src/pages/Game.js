@@ -18,9 +18,17 @@ const Game = () => {
         axios.get(process.env.REACT_APP_API_ADRESS + "/api/users/" + user.userId).then((res) => setUserData(res.data));
       };
       getUserData();
+      
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+
+// console.log(userData.user);
+
+
+
+
 
   const handleClick = (e) => {
     history.push("/");
@@ -32,6 +40,9 @@ const Game = () => {
     localStorage.removeItem("user");
     handleClick();
   };
+
+  // const imgProfile = process.env.REACT_APP_API_ADRESS+ userData.user.imageUrl.split("http://localhost:3000")[1]
+console.log( userData.user);
 
   if (!user) {
     history.push("/");
@@ -45,7 +56,7 @@ const Game = () => {
         <p>
           <strong>Image:</strong> {userData.imageUrl}
         </p>
-        <img src={userData.imageUrl} alt="" />
+        {/* <img src={imgProfile} alt="User Profil" /> */}
       </div>
     );
   }

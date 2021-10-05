@@ -35,7 +35,7 @@ const CommentComp = (comment) => {
     setIsEditing(false);
   };
   // END OF : ------------    MODIFY POST LOGIC   ----------------
-
+console.log(comment.comment);
   // console.log(comment.comment.id);
   // ---------------------    CREATE DOM    ----------------------
 

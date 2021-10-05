@@ -42,10 +42,10 @@ const Article = ({ article }) => {
 if(article.UserId === user.userId){
     return (
       <div className="article" style={{ background: isEditing ? "#f3feff" : "white", border: "2px solid yellow" }}>
-        <p>Post</p>
+        
         <div className="card-header">
-          <h3>{article.User.username}</h3>
           <em>Posté le {dateParser(article.createdAt)}</em>
+          <p>par : {article.User.username}</p>
         </div>
 
         {isEditing ? <textarea onChange={(e) => setEditedText(e.target.value)} autoFocus defaultValue={editedText ? editedText : article.text}></textarea> : <p>{editedText ? editedText : article.text}</p>}
@@ -62,10 +62,10 @@ if(article.UserId === user.userId){
   }{
     return (
       <div className="article" style={{ background: isEditing ? "#f3feff" : "white", border: "2px solid yellow" }}>
-        <p>Post</p>
+        
         <div className="card-header">
-          <h3>{article.User.username}</h3>
           <em>Posté le {dateParser(article.createdAt)}</em>
+          <p>par : {article.User.username}</p>
         </div>
 
         <p>{article.text}</p>
