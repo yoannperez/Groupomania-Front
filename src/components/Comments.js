@@ -59,13 +59,14 @@ const Comments = (article) => {
       {/* <h3>Post number{article.comment}</h3> */}
 
 
-      <ul>
+      <div >
+      <header>Commentaires</header>
         {commentData
           // .sort((a, b) => b.id - a.id)
           .map((comment) => (
             <CommentComp key={comment.id} comment={comment} />
             ))}
-      </ul>
+      </div>
       <form onSubmit={(e) => handleSubmit(e)}>
         {/* // -- style={{border: error ? "1px solid red" :"1px solid #61dafb"}}  ==> Teste l'erreur*/}
         <textarea style={{ border: error ? "1px solid red" : "1px solid #61dafb" }} onChange={(e) => setTextData(e.target.value)} placeholder="Ecrivez un commentaire ..." value={content}></textarea>
