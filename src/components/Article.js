@@ -48,7 +48,10 @@ if(article.UserId === user.userId){
           
         </div>
 
-        {isEditing ? <textarea onChange={(e) => setEditedText(e.target.value)} autoFocus defaultValue={editedText ? editedText : article.text}></textarea> : <p>{editedText ? editedText : article.text}</p>}
+        {isEditing ?
+        <label for="textInput">Entrez votre texte :
+         <textarea onChange={(e) => setEditedText(e.target.value)} id="textInput" autoFocus defaultValue={editedText ? editedText : article.text}></textarea></label>
+          : <p>{editedText ? editedText : article.text}</p>}
 
         <div className="btn-container">
           {isEditing ? <button onClick={handleEdit}>Valider</button> : <button onClick={() => setIsEditing(true)}>Edit</button>}

@@ -20,6 +20,7 @@ body {
   padding: 0em 0em;
   margin: 0rem auto;
   max-width: 1296px;
+  min-width: 350px;
   font-family: $font-1;
   color: $color-3;
   // background-color: blue;
@@ -41,6 +42,8 @@ a:visited {
   display: flex;
   justify-content: center;
   align-items: center;
+  align-content: center;
+  text-align: center;
   margin: 0rem auto;
   width: 100vw;
   max-width: 1296px;
