@@ -4,7 +4,7 @@ import "./styles/index.scss";
 import AuthService from "./services/auth.service";
 import Login from "./components/login.component";
 import Register from "./components/register.component";
-import Profile from "./components/profile.component";
+
 import Feed from "./pages/Feed";
 import Game from "./pages/Game";
 import banner from "./assets/icon-left-font-monochrome-white.svg";
@@ -60,7 +60,7 @@ class App extends Component {
             {/* <Route exact path="/" component={Feed} /> */}
             <Route exact path="/" component={Feed} />
             <Route exact path="/game" component={Game} />
-            <Route exact path="/profile" component={Profile} />
+            
             <Route component={Feed} />
           </Switch>
          
