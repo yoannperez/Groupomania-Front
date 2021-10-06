@@ -1,12 +1,12 @@
 import React, { Component } from "react";
+import axios from "axios";
 import { Switch, Route, Link, Redirect } from "react-router-dom";
 import "./styles/index.scss";
 import AuthService from "./services/auth.service";
 import Login from "./components/login.component";
 import Register from "./components/register.component";
-
 import Feed from "./pages/Feed";
-import Game from "./pages/Game";
+import Profile from "./pages/Profile";
 import banner from "./assets/icon-left-font-monochrome-white.svg";
 
 import NotFound from "./pages/NotFound";
@@ -14,22 +14,35 @@ import NotFound from "./pages/NotFound";
 
 const user = AuthService.getCurrentUser();
 
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.logOut = this.logOut.bind(this);
   }
 
-  // componentDidMount() {
-  //   const user = AuthService.getCurrentUser();
-  // }
+
 
   logOut() {
     AuthService.logout();
   }
 
+  getUserImage(userid) {
+    axios.defaults.headers.common["Authorization"] = "Bearer " + userid.token;
+     axios
+      .get(process.env.REACT_APP_API_ADRESS + "/api/users/" + userid.userId )
+      // .then((response) =>console.log(response.data.user.imageUrl))
+      .then((response) =>{ return response.data.user.imageUrl} )
+      .catch((response) => "Pas Fait");
+  };
+  
+
+
   render() {
     if (user) {
+      console.log(this.getUserImage(user));
+      
+      
       // If user as a Token
       return (
         <div className="wrapper">
@@ -54,16 +67,14 @@ class App extends Component {
               )}
             </div>
           </nav>
-            
+
           <Switch>
             {/* <Redirect to="/feed" /> */}
             {/* <Route exact path="/" component={Feed} /> */}
             <Route exact path="/" component={Feed} />
-            <Route exact path="/game" component={Game} />
-            
+            <Route exact path="/game" component={Profile} />
             <Route component={Feed} />
           </Switch>
-         
         </div>
       );
     } else {
@@ -89,12 +100,9 @@ class App extends Component {
             </Switch>
           </div>
           <div className="wrapper footerBar">
-            
             <h3> Le réseau qui vous ressemble et qui nous rassemble</h3>
           </div>
-
         </div>
-        
       );
     }
   }

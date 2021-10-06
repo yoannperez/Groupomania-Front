@@ -6,7 +6,7 @@ import UploadImg from "../components/Profil/UploadImg";
 
 require("dotenv").config();
 
-const Game = () => {
+const Profile = () => {
   const history = useHistory();
   const API_URL = process.env.REACT_APP_API_ADRESS;
   const [userData, setUserData] = useState([]);
@@ -56,4 +56,4 @@ const Game = () => {
   }
 };
 
-export default Game;
+export default Profile;
