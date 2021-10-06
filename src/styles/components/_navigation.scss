@@ -48,6 +48,7 @@
     }
   }
   a {
+    
     text-transform: uppercase;
     color: white;
     margin: 5px 10px;
@@ -55,7 +56,14 @@
     position: relative;
     border-radius: 10px;
   }
-  
-
-  
+    
+}
+.profilePicture{
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+  border: 1px solid white;
+  object-position: center;
+  object-fit: cover;
+  border-radius: 30px;
 }

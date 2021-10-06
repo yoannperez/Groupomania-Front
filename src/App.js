@@ -14,35 +14,36 @@ import NotFound from "./pages/NotFound";
 
 const user = AuthService.getCurrentUser();
 
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.logOut = this.logOut.bind(this);
   }
-
-
-
+  state = {
+    image: "",
+  };
   logOut() {
     AuthService.logout();
   }
 
-  getUserImage(userid) {
-    axios.defaults.headers.common["Authorization"] = "Bearer " + userid.token;
-     axios
-      .get(process.env.REACT_APP_API_ADRESS + "/api/users/" + userid.userId )
-      // .then((response) =>console.log(response.data.user.imageUrl))
-      .then((response) =>{ return response.data.user.imageUrl} )
-      .catch((response) => "Pas Fait");
-  };
-  
+  componentDidMount() {
+    if (user) {
+      require("dotenv").config();
+      axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
+      axios
+        .get(process.env.REACT_APP_API_ADRESS + "/api/users/" + user.userId)
 
+        .then((response) => {
+          const image = response.data.user.imageUrl.replace("http://localhost:3000", process.env.REACT_APP_API_ADRESS);
+          this.setState({ image });
+        })
+
+        .catch((response) => Error);
+    }
+  }
 
   render() {
     if (user) {
-      console.log(this.getUserImage(user));
-      
-      
       // If user as a Token
       return (
         <div className="wrapper">
@@ -59,8 +60,8 @@ class App extends Component {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a href="/game" className="nav-link">
-                      Profil
+                    <a href="/profile" className="nav-link">
+                      <img src={this.state.image} className="profilePicture" alt="profile picture" /> Profil
                     </a>
                   </li>
                 </div>
@@ -69,10 +70,8 @@ class App extends Component {
           </nav>
 
           <Switch>
-            {/* <Redirect to="/feed" /> */}
-            {/* <Route exact path="/" component={Feed} /> */}
             <Route exact path="/" component={Feed} />
-            <Route exact path="/game" component={Profile} />
+            <Route exact path="/profile" component={Profile} />
             <Route component={Feed} />
           </Switch>
         </div>
@@ -93,9 +92,6 @@ class App extends Component {
               <Route exact path="/" component={Login} />
 
               <Route exact path="/register" component={Register} />
-              {/* <Route exact path="/game" component={Game} />
-              <Route exact path="/profile" component={Profile} />
-              <Route exact path="/feed" component={Feed} /> */}
               <Route component={Login} />
             </Switch>
           </div>

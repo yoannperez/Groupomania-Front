@@ -2,12 +2,13 @@ import axios from "axios";
 import React, { useState } from "react";
 import authService from "../../services/auth.service";
 
+
 require("dotenv").config();
 
 const UploadImg = (userInfo) => {
   const userToken = authService.getCurrentUser();
   const [file, setFile] = useState();
-
+ 
   // {
   //   username: "totoc6",
   //   description: " Un truc",
@@ -28,6 +29,8 @@ const UploadImg = (userInfo) => {
       )
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+      
+     
   };
 
   // -----------------   END OF: SEND Datas to API   --------------------
@@ -50,15 +53,18 @@ const UploadImg = (userInfo) => {
           "Content-Type": "multipart/form-data",
         },
       })
-      .then((res) => console.log(res))
+      .then((res) => "OK!")
       .catch((err) => console.log(err));
+      setTimeout(() => {
+        window.location.reload();
+      }, 800);
   };
 
   //
-  sendProfile({
-    username: "Mon nouveau nom 2",
-    description: " J'ai une super description !",
-  });
+  // sendProfile({
+  //   username: "Mon nouveau nom 2",
+  //   description: " J'ai une super description !",
+  // });
 
   return (
     
