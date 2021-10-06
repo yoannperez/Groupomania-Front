@@ -41,9 +41,9 @@ const CommentComp = (comment) => {
 
   if (user.userId === comment.comment.UserId) {
     return (
-      <div style={{ display: "flex", width: "100%", border: "1px solid blue" }}>
+      <div style={{ display: "flex", width: "100%" }}>
         {/* <p>commentComp</p> */}
-        <div style={{ width: "100%", display: "flex", flexDirection: "column", color: "blue" }}>
+        <div style={{ width: "100%", display: "flex", flexDirection: "column" }}>
           {isEditing ? <textarea onChange={(e) => setEditedText(e.target.value)} autoFocus defaultValue={editedText ? editedText : comment.comment.commentaire}></textarea> : <p>{editedText ? editedText : comment.comment.commentaire}</p>}
           <div style={{ display: "flex", flexDirection: "row", gap: "10px", alignItems: "bottom" }}>
             <em >Le {dateParser(comment.comment.updatedAt)}, par {comment.comment.User.username} </em>
@@ -59,13 +59,13 @@ const CommentComp = (comment) => {
   }
   {
     return (
-      <div style={{ display: "flex", width: "100%", border: "1px solid black" }}>
-        {/* <p>commentComp</p> */}
+      <div style={{ display: "flex", width: "100%" }}>
         <div style={{ width: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+        
           {isEditing ? <textarea onChange={(e) => setEditedText(e.target.value)} autoFocus defaultValue={editedText ? editedText : comment.comment.commentaire}></textarea> : <p>{editedText ? editedText : comment.comment.commentaire}</p>}
           <div style={{ display: "flex", flexDirection: "row", gap: "10px", alignItems: "bottom" }}>
-            <p>Le {dateParser(comment.comment.updatedAt)},</p>
-            <p>par {comment.comment.User.username}</p>
+            <em>Le {dateParser(comment.comment.updatedAt)}, par {comment.comment.User.username}</em>
+            
           </div>
         </div>
       </div>

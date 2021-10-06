@@ -25,7 +25,7 @@ export default class Login extends Component {
     this.onChangePassword = this.onChangePassword.bind(this);
 
     this.state = {
-      username: "",
+      email: "",
       password: "",
       loading: false,
       message: ""
@@ -34,7 +34,7 @@ export default class Login extends Component {
 
   onChangeUsername(e) {
     this.setState({
-      username: e.target.value
+      email: e.target.value
     });
   }
 
@@ -57,7 +57,7 @@ export default class Login extends Component {
 
     if (this.checkBtn.context._errors.length === 0) {
       
-      AuthService.login(this.state.username, this.state.password).then(
+      AuthService.login(this.state.email, this.state.password).then(
         () => {
           // this.props.history.push("/profile");
           // this.props.history.push("/feed");
@@ -107,7 +107,7 @@ export default class Login extends Component {
                 type="email"
                 className="form-control"
                 name="email"
-                value={this.state.username}
+                value={this.state.email}
                 onChange={this.onChangeUsername}
                 validations={[required]}
               />

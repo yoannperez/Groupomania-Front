@@ -63,9 +63,9 @@ const Feed = () => {
         <form className="publicate" onSubmit={(e) => handleSubmit(e)}>
           <textarea style={{ border: error ? "1px solid red" : "1px solid #61dafb" }} onChange={(e) => setTextData(e.target.value)} placeholder="Que voulez-vous dire ?" value={content}></textarea>
           {/* Message donné si la condition n'est pas bonne */}
-          {error && <p> Veuillez écrire un texte plus long que 2 caracts</p>}
           <input type="submit" value="Publier" />
         </form>
+          {error && <p style={{ color: error ? " red" : "1px solid #61dafb" , textAlign:"center"}}> Veuillez écrire un texte plus long que 2 caracts</p>}
         <h1>Derniers articles</h1>
         <ul>
           {newsData
