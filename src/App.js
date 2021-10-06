@@ -88,8 +88,8 @@ class App extends Component {
               <Route component={Login} />
             </Switch>
           </div>
-          <div className="footerBar">
-            {" "}
+          <div className="wrapper footerBar">
+            
             <h3> Le réseau qui vous ressemble et qui nous rassemble</h3>
           </div>
 

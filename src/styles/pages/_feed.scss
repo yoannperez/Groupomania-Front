@@ -7,11 +7,11 @@
   }
   
   form {
-    background: white;
+    background: rgba(255, 255, 255, 0);
     border-radius: 5px;
     display: flex;
     gap:5px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    
     margin-top: 10px;
     //   min-width: 400px;
     text-align: center;
@@ -24,27 +24,32 @@
       // margin: 5px 0;
       padding: 5px;
       border-radius: 5px;
-      border: 1px solid $color-1;
+      border: 1px solid white;
       resize: none;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     }
     textarea {
       height: 50px;
       width: 100%;
+      border: 1px solid white !important; 
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      
     }
     p {
       font-size: 0.8rem;
       color: red;
     }
     input[type="submit"] {
-      width: 50px;
+      width: 80px;
+      color :white;
       margin-left: auto;
       cursor: pointer;
       transition: 0.4s;
-      background: $color-1;
+      background: rgba( $groupomania-blue, .8);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 
       &:hover {
-        background: $color-3;
+        background: $groupomania-red;
         color: white;
       }
     }

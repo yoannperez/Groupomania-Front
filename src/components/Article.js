@@ -41,11 +41,11 @@ const Article = ({ article }) => {
   // ---------------------    CREATE DOM    ----------------------
 if(article.UserId === user.userId){
     return (
-      <div className="article" style={{ background: isEditing ? "#f3feff" : "white", border: "2px solid yellow" }}>
+      <div className="article" style={{ background: isEditing ? "#f3feff" : "white", border: "2px solid white" }}>
         
         <div className="card-header">
-          <em>Posté le {dateParser(article.createdAt)}</em>
-          <p>par : {article.User.username}</p>
+          <em>Posté le {dateParser(article.createdAt)}, par {article.User.username}</em>
+          
         </div>
 
         {isEditing ? <textarea onChange={(e) => setEditedText(e.target.value)} autoFocus defaultValue={editedText ? editedText : article.text}></textarea> : <p>{editedText ? editedText : article.text}</p>}
@@ -61,11 +61,10 @@ if(article.UserId === user.userId){
 
   }{
     return (
-      <div className="article" style={{ background: isEditing ? "#f3feff" : "white", border: "2px solid yellow" }}>
+      <div className="article" style={{ background: isEditing ? "#f3feff" : "white", border: "2px solid white" }}>
         
         <div className="card-header">
-          <em>Posté le {dateParser(article.createdAt)}</em>
-          <p>par : {article.User.username}</p>
+        <em>Posté le {dateParser(article.createdAt)}, par {article.User.username}</em>
         </div>
 
         <p>{article.text}</p>

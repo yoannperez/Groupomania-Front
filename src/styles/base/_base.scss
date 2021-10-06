@@ -41,11 +41,12 @@ a:visited {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0rem auto;
   width: 100vw;
+  max-width: 1296px;
   height: 60px;
   color: white;
   background-color: rgba($groupomania-blue, 0.8);
   position: absolute;
   bottom: 0;
-  left: 0;
 }

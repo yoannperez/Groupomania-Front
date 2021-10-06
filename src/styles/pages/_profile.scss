@@ -1,0 +1,56 @@
+.profil-container {
+  min-width: 350px;
+  display: flex;
+  margin: 2em auto;
+  padding: 2em;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  border: 2px solid $groupomania-blue;
+  border-radius: 15px;
+  & form {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+
+    
+    .inputfile{
+        border: 1px solid #ccc;
+        display: inline-block;
+        padding: 6px 12px;
+        cursor: pointer;
+    }
+  }
+}
+
+.update-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  & img {
+    width: 150px;
+    height: 150px;
+    margin: 20px auto;
+    object-position: center;
+    object-fit: cover;
+    border-radius: 300px;
+  }
+}
+
+.top-part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.upload-pic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
