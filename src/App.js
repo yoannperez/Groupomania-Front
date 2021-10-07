@@ -43,8 +43,7 @@ class App extends Component {
   }
 
   render() {
-    if (user) {
-      // If user as a Token
+    if (user) { // If user as a Token
       return (
         <div className="wrapper">
           <nav className="navigationContainer">

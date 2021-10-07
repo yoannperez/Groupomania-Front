@@ -40,11 +40,8 @@ const UploadImg = (userInfo) => {
     e.preventDefault();
 
     const data = new FormData();
-    // data.append("name", user.user.username);
-    let body = {
-      username: "ralalala",
-    };
-    // data.append("user", body);
+    
+    
     data.append("image", file);
     axios.defaults.headers.common["Authorization"] = "Bearer " + userToken.token;
     axios
