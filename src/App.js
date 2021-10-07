@@ -21,6 +21,7 @@ class App extends Component {
   }
   state = {
     image: "",
+    isAdmin:{},
   };
   logOut() {
     AuthService.logout();
@@ -36,14 +37,16 @@ class App extends Component {
         .then((response) => {
           const image = response.data.user.imageUrl.replace("http://localhost:3000", process.env.REACT_APP_API_ADRESS);
           this.setState({ image });
+          const isAdmin = response.data.user.isAdmin;
+          this.setState({isAdmin})
         })
 
         .catch((response) => Error);
     }
   }
-
   render() {
-    if (user) { // If user as a Token
+    console.log(this.state.isAdmin);
+    if (user && !this.state.isAdmin) { // If user as a Token
       return (
         <div className="wrapper">
           <nav className="navigationContainer">
@@ -75,7 +78,42 @@ class App extends Component {
           </Switch>
         </div>
       );
-    } else {
+    } else
+    if (user && this.state.isAdmin) { // If user as a Token
+      return (
+        <div className="wrapper">
+          <nav className="navigationContainer" style={{backgroundColor:"#e0676e"}}>
+            <Link to={"/"} className="brandName">
+              <img src={banner} style={{ height: "30px" }} alt="banner image" className="banner-img" />
+            </Link>
+            
+            <div className="userNav">
+              {user && (
+                <div className="navbar-nav">
+                  <li className="nav-item">
+                    <a href="/" className="nav-link" onClick={this.logOut}>
+                      LogOut
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a href="/profile" className="nav-link">
+                      <img src={this.state.image} className="profilePicture" alt="profile picture" />  Admin
+                    </a>
+                  </li>
+                </div>
+              )}
+            </div>
+          </nav>
+
+          <Switch>
+            <Route exact path="/" component={Feed} />
+            <Route exact path="/profile" component={Profile} />
+            <Route component={Feed} />
+          </Switch>
+        </div>
+      );
+    } 
+    else {
       // If user doesn't have a Token
       return (
         <div className="wrapper">
