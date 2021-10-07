@@ -57,7 +57,7 @@ const UploadImg = (userInfo) => {
       .catch((err) => console.log(err));
       setTimeout(() => {
         window.location.reload();
-      }, 800);
+      }, 2000);
   };
 
   //

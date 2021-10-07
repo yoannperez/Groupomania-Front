@@ -55,10 +55,6 @@ const Comments = (article) => {
   // ---------------    OBJECT RETURNED TO VIRTUAL DOM    ------------------
   return (
     <div style={{border:"2px solid white"}}>
-      {/* <h3>Comments.js</h3> */}
-      {/* <h3>Post number{article.comment}</h3> */}
-
-
       <div >
       <header>Commentaires</header>
         {commentData

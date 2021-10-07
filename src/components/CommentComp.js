@@ -46,8 +46,8 @@ const CommentComp = (comment) => {
         <div style={{ width: "100%", display: "flex", flexDirection: "column" }}>
           {isEditing ? <textarea onChange={(e) => setEditedText(e.target.value)} autoFocus defaultValue={editedText ? editedText : comment.comment.commentaire}></textarea> : <p>{editedText ? editedText : comment.comment.commentaire}</p>}
           <div style={{ display: "flex", flexDirection: "row", gap: "10px", alignItems: "bottom" }}>
-            <em >Le {dateParser(comment.comment.updatedAt)}, par {comment.comment.User.username} </em>
             
+            <em >Le {dateParser(comment.comment.updatedAt)}, par {comment.comment.User.username} </em>
           </div>
             <div className="btn-container">
               {isEditing ? <button onClick={handleEdit}>Valider</button> : <button onClick={() => setIsEditing(true)}>Edit</button>}
