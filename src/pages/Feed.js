@@ -24,7 +24,7 @@ const Feed = () => {
   // -----------      Get Datas From API Function     ------------------
   const getData = () => {
     axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
-    axios.get(process.env.REACT_APP_API_ADRESS+ "/api/posts/find/").then((res) => setNewsData(res.data));
+    axios.get(process.env.REACT_APP_API_ADRESS+ "/api/posts/").then((res) => setNewsData(res.data));
   };
   // -----------   END OF:    Get Datas From API Function   -------------
 
@@ -35,7 +35,7 @@ const Feed = () => {
       setError(true);
     } else {
       axios
-        .post(process.env.REACT_APP_API_ADRESS + "/api/posts/new", {
+        .post(process.env.REACT_APP_API_ADRESS + "/api/posts/", {
           text: content,
           UserId: user.userId,
         })
