@@ -63,10 +63,12 @@ const Comments = (article) => {
             <CommentComp key={comment.id} comment={comment} />
             ))}
       </div>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form  className="publicate" onSubmit={(e) => handleSubmit(e)}>
         {/* // -- style={{border: error ? "1px solid red" :"1px solid #61dafb"}}  ==> Teste l'erreur*/}
-        <textarea style={{ border: error ? "1px solid red" : "1px solid #61dafb" }} onChange={(e) => setTextData(e.target.value)} placeholder="Ecrivez un commentaire ..." value={content}></textarea>
-        {/* // Message donné si la condition n'est pas  bonne */}
+        
+        <textarea id="textArea" style={{ border: error ? "1px solid red" : "1px solid #61dafb" }} onChange={(e) => setTextData(e.target.value)} placeholder="Ecrivez un commentaire ..." value={content}></textarea>
+        
+        
         {error && <p> Veuillez écrire un texte plus long que 2 caracts</p>}
         <input type="submit" value="Envoyer" />
       </form>

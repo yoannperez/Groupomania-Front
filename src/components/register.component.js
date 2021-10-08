@@ -116,6 +116,7 @@ export default class Register extends Component {
     return (
       <div className="logContainer">
         <div className="card-container">
+        <h1>BIENVENUE</h1>
           <img src={logo} alt="profile-img" className="profile-img-card" />
 
           <Form

@@ -86,8 +86,10 @@ export default class Login extends Component {
 // ---------------    OBJECT RETURNED TO VIRTUAL DOM    ------------------
   render() {
     return (
+
       <div className="logContainer">
         <div className="card-container">
+        <h1>BIENVENUE</h1>
           <img
             src={logo}
             alt="profile-img"

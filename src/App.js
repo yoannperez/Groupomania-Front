@@ -92,7 +92,7 @@ class App extends Component {
         <div className="wrapper">
           <nav className="navigationContainer">
             <Link to={"/"} className="brandName">
-              <img src={banner} style={{ height: "30px" }} alt="logo" className="banner-img" />
+              <img src={banner} style={{ height: "30px" }} alt="groupomania-logo" className="banner-img" />
             </Link>
           </nav>
 
@@ -105,7 +105,7 @@ class App extends Component {
             </Switch>
           </div>
           <div className="wrapper footerBar">
-            <h3> Le réseau qui vous ressemble et qui nous rassemble</h3>
+            <p> Le réseau qui vous ressemble et qui nous rassemble</p>
           </div>
         </div>
       );
