@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 import "./styles/index.scss";
 import AuthService from "./services/auth.service";
 import Login from "./components/login.component";
@@ -8,9 +8,6 @@ import Register from "./components/register.component";
 import Feed from "./pages/Feed";
 import Profile from "./pages/Profile";
 import banner from "./assets/icon-left-font-monochrome-white.svg";
-
-import NotFound from "./pages/NotFound";
-// import userInfo from "./services/user.service";
 
 const user = AuthService.getCurrentUser();
 
@@ -54,13 +51,13 @@ class App extends Component {
           {/* <nav className="navigationContainer" style={{ backgroundColor: admin ? "red" : "green" }}> */}
           <nav className={admin ? "navigationContainer admin" : "navigationContainer"}>
             <Link to={"/"} className="brandName">
-              <img src={banner} style={{ height: "30px" }} alt="banner image" className="banner-img" />
+              <img src={banner} style={{ height: "30px" }} alt="groupomania-logo" className="banner-img" />
             </Link>
             <div className="userNav">
               {user && (
                 <div className="navbar-nav">
                   <li className="nav-item">
-                    <a href="/" className="nav-link" onClick={this.logOut}>
+                    <a href="/login" className="nav-link" onClick={this.logOut}>
                       LogOut
                     </a>
                   </li>
@@ -94,7 +91,7 @@ class App extends Component {
         <div className="wrapper">
           <nav className="navigationContainer">
             <Link to={"/"} className="brandName">
-              <img src={banner} style={{ height: "30px" }} alt="banner image" className="banner-img" />
+              <img src={banner} style={{ height: "30px" }} alt="logo" className="banner-img" />
             </Link>
           </nav>
 

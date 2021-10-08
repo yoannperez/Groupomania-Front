@@ -4,8 +4,7 @@ import { useHistory } from "react-router-dom";
 import Article from "../components/Article";
 import authService from "../services/auth.service";
 
-require('dotenv').config()
-
+require("dotenv").config();
 
 const Feed = () => {
   const [newsData, setNewsData] = useState([]);
@@ -25,7 +24,7 @@ const Feed = () => {
   const getData = () => {
     axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
     // axios.defaults.baseURL = 'http://localhost:3333/';
-    axios.get(process.env.REACT_APP_API_ADRESS+ "/api/posts/").then((res) => setNewsData(res.data));
+    axios.get(process.env.REACT_APP_API_ADRESS + "/api/posts/").then((res) => setNewsData(res.data));
   };
   // -----------   END OF:    Get Datas From API Function   -------------
 
@@ -61,14 +60,15 @@ const Feed = () => {
   } else {
     return (
       <div className="feedContainer">
-        
-        
         <form className="publicate" onSubmit={(e) => handleSubmit(e)}>
-          <textarea style={{ border: error ? "1px solid red" : "1px solid #61dafb" }} onChange={(e) => setTextData(e.target.value)} placeholder="Que voulez-vous dire ?" value={content}></textarea>
-          {/* Message donné si la condition n'est pas bonne */}
+          <label htmlFor="textArea" className="labelHidden">
+           
+            Entrez votre texte
+            <textarea style={{ border: error ? "1px solid red" : "1px solid #61dafb" }} id="textArea" onChange={(e) => setTextData(e.target.value)} placeholder="Que voulez-vous dire ?" value={content}></textarea>
+          </label>
           <input type="submit" value="Publier" />
         </form>
-          {error && <p style={{ color: error ? " red" : "1px solid #61dafb" , textAlign:"center"}}> Veuillez écrire un texte plus long que 2 caracts</p>}
+        {error && <p style={{ color: error ? " red" : "1px solid #61dafb", textAlign: "center" }}> Veuillez écrire un texte plus long que 2 caracts</p>}
         <h1>Derniers articles</h1>
         <ul>
           {newsData
@@ -77,7 +77,6 @@ const Feed = () => {
               <Article key={post.id} article={post} />
             ))}
         </ul>
-        
       </div>
     );
   }

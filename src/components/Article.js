@@ -3,6 +3,7 @@ import axios from "axios";
 import DeletePost from "./DeletePost";
 import authService from "../services/auth.service";
 import Comments from "./Comments";
+import ArticleCardheaher from "./Article/ArticleCardheaher";
 const API_URL = process.env.REACT_APP_API_ADRESS;
 require("dotenv").config();
 
@@ -12,19 +13,7 @@ const Article = ({ article }) => {
   const [editedText, setEditedText] = useState("");
   const [userData, setUserData] = useState([]);
 
-  // -----------------    DATE PARSER    -----------------------
-  const dateParser = (date) => {
-    let newDate = new Date(date).toLocaleDateString("fr-FR", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric",
-    });
-    return newDate;
-  };
-  // END OF : ------------    DATE PARSER    --------------------
+
 
   // -----------      Get User's Datas From API Function     ------------------
   useEffect(() => {
@@ -43,11 +32,6 @@ const Article = ({ article }) => {
   }, []);
   // -----------   END OF:    Get User's Datas From API Function   -------------
 
-
-
-
-
-
   // ---------------------    MODIFY POST LOGIC   ----------------
   const handleEdit = () => {
     const data = {
@@ -57,19 +41,15 @@ const Article = ({ article }) => {
     setIsEditing(false);
   };
   // END OF : ------------    MODIFY POST LOGIC   ----------------
-
+  
   // ---------------------    CREATE DOM    ----------------------
-  if (article.UserId === user.userId || (userData.isAdmin)) {
+  if (article.UserId === user.userId || userData.isAdmin) {
     return (
       <div className="article" style={{ background: isEditing ? "#f3feff" : "white", border: "2px solid white" }}>
-        <div className="card-header">
-          <em>
-            Posté le {dateParser(article.createdAt)}, par {article.User.username}
-          </em>
-        </div>
+        <ArticleCardheaher article={article} />
 
         {isEditing ? (
-          <label for="textInput">
+          <label htmlFor="textInput">
             Entrez votre texte :<textarea onChange={(e) => setEditedText(e.target.value)} id="textInput" autoFocus defaultValue={editedText ? editedText : article.text}></textarea>
           </label>
         ) : (
@@ -88,12 +68,7 @@ const Article = ({ article }) => {
   {
     return (
       <div className="article" style={{ background: isEditing ? "#f3feff" : "white", border: "2px solid white" }}>
-        <div className="card-header">
-          <em>
-            Posté le {dateParser(article.createdAt)}, par {article.User.username}
-          </em>
-        </div>
-
+        <ArticleCardheaher article={article} />
         <p>{article.text}</p>
         <Comments comment={article.id} />
       </div>
