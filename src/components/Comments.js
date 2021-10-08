@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import CommentComp from "./CommentComp";
 import authService from "../services/auth.service";
-// import { useHistory } from "react-router-dom";
+
 require('dotenv').config()
 
 const Comments = (article) => {
@@ -44,7 +44,6 @@ const Comments = (article) => {
         })
         .then(() => {
           setError(false);
-          // setUserId("");
           setTextData("");
           getData();
         });

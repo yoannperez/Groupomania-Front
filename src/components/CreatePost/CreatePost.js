@@ -1,11 +1,17 @@
-import React from 'react';
+import React from "react";
 
-const CreatePost = () => {
-    return (
-        <div>
-            Create post
-        </div>
-    );
+
+const CreatePost = (e) => {
+ 
+
+
+
+  
+  return (
+    <div>
+      
+    </div>
+  );
 };
 
 export default CreatePost;

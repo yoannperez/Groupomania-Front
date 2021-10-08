@@ -12,11 +12,14 @@ const Article = ({ article }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState("");
   const [userData, setUserData] = useState([]);
-
-
+  const [imageUrl, setImageUrl] = useState("");
 
   // -----------      Get User's Datas From API Function     ------------------
   useEffect(() => {
+    if (article.imageUrl) {
+      setImageUrl(article.imageUrl.replace("http://localhost:3000", API_URL));
+    }
+
     if (user) {
       const getUserData = () => {
         axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
@@ -28,6 +31,7 @@ const Article = ({ article }) => {
       };
       getUserData();
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // -----------   END OF:    Get User's Datas From API Function   -------------
@@ -41,7 +45,7 @@ const Article = ({ article }) => {
     setIsEditing(false);
   };
   // END OF : ------------    MODIFY POST LOGIC   ----------------
-  
+
   // ---------------------    CREATE DOM    ----------------------
   if (article.UserId === user.userId || userData.isAdmin) {
     return (
@@ -53,7 +57,10 @@ const Article = ({ article }) => {
             Entrez votre texte :<textarea onChange={(e) => setEditedText(e.target.value)} id="textInput" autoFocus defaultValue={editedText ? editedText : article.text}></textarea>
           </label>
         ) : (
-          <p>{editedText ? editedText : article.text}</p>
+          <div className="articleflex">
+            <p className="flexParaf">{editedText ? editedText : article.text}</p>
+            {article.imageUrl && <img className="postPhoto" src={imageUrl.replace("http://localhost:3000", API_URL)} alt="" />}
+          </div>
         )}
 
         <div className="btn-container">
@@ -69,7 +76,10 @@ const Article = ({ article }) => {
     return (
       <div className="article" style={{ background: isEditing ? "#f3feff" : "white", border: "2px solid white" }}>
         <ArticleCardheaher article={article} />
-        <p>{article.text}</p>
+        <div className="articleflex">
+          <p className="flexParaf">{article.text}</p>
+          {article.imageUrl && <img className="postPhoto" src={imageUrl.replace("http://localhost:3000", API_URL)} alt="" />}
+        </div>
         <Comments comment={article.id} />
       </div>
     );
