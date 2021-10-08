@@ -45,11 +45,11 @@ const Profile = () => {
           <div className="top-part">
             <img src={userData.imageUrl} alt="Avatar"></img>
             <UploadImg user={userData} />
+          </div>
+        </div>
             {!userData.isAdmin && 
             <DeleteProfile id={userData.id} />
             }
-          </div>
-        </div>
       </div>
     );
   }
