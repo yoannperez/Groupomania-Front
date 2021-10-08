@@ -3,6 +3,7 @@ import { React, useEffect, useState } from "react";
 import AuthService from "../services/auth.service";
 import { useHistory } from "react-router-dom";
 import UploadImg from "../components/Profil/UploadImg";
+import DeleteProfile from "../components/Profil/DeleteProfile";
 
 require("dotenv").config();
 
@@ -12,6 +13,7 @@ const Profile = () => {
   const [userData, setUserData] = useState([]);
   const user = AuthService.getCurrentUser();
 
+  // -----------      Get User's Datas From API Function     ------------------
   useEffect(() => {
     if (user) {
       const getUserData = () => {
@@ -26,9 +28,9 @@ const Profile = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  // -----------   END OF:    Get User's Datas From API Function   -------------
 
-  // console.log(userData);
-
+  // ---------------    OBJECT RETURNED TO VIRTUAL DOM    ------------------
   if (!user) {
     history.push("/");
 
@@ -41,19 +43,17 @@ const Profile = () => {
         <p>{userData.description}</p>
         <div className="update-container">
           <div className="top-part">
-            
             <img src={userData.imageUrl} alt="user-picture"></img>
-            <UploadImg user={userData}/>
+            <UploadImg user={userData} />
+            {!userData.isAdmin && 
+            <DeleteProfile id={userData.id} />
+            }
           </div>
         </div>
-        {/* <p>
-          <strong>Image:</strong>
-          {userData.imageUrl}
-        </p>
-        <img src={userData.imageUrl} alt="User Profil" /> */}
       </div>
     );
   }
+  // -----------    END OF: OBJECT SEND TO VIRTUAL DOM    ----------
 };
 
 export default Profile;

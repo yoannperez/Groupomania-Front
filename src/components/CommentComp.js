@@ -9,8 +9,7 @@ const CommentComp = (comment) => {
   const [editedText, setEditedText] = useState("");
   const user = authService.getCurrentUser();
 
-  //  console.log(user.userId);
-  //  console.log(comment.comment.UserId);
+
 
   // -----------------    DATE PARSER    -----------------------
   const dateParser = (date) => {
@@ -35,8 +34,7 @@ const CommentComp = (comment) => {
     setIsEditing(false);
   };
   // END OF : ------------    MODIFY POST LOGIC   ----------------
-  // console.log(comment.comment);
-  // console.log(comment.comment.id);
+
   // ---------------------    CREATE DOM    ----------------------
 
   if (user.userId === comment.comment.UserId) {

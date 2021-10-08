@@ -1,3 +1,5 @@
+
+
 .navigationContainer {
   padding: 0 1em;
   background-color: rgba($groupomania-blue, 0.8);
@@ -6,7 +8,7 @@
   justify-content: space-between;
   vertical-align: middle;
   color: white;
-
+  
   .brandName {
     // color: white;
     text-transform: uppercase;
@@ -67,3 +69,8 @@
   object-fit: cover;
   border-radius: 30px;
 }
+
+.admin {
+ 
+  background-color: rgba($groupomania-red, 0.8);
+  }
