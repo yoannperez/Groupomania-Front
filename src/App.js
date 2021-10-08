@@ -52,7 +52,7 @@ class App extends Component {
           {/* <nav className="navigationContainer" style={{ backgroundColor: admin ? "red" : "green" }}> */}
           <nav className={admin ? "navigationContainer admin" : "navigationContainer"}>
             <Link to={"/"} className="brandName">
-              <img src={banner} style={{ height: "30px" }} alt="groupomania-logo" className="banner-img" />
+              <img src={banner} style={{ height: "5vh" }} alt="groupomania-logo" className="banner-img" />
             </Link>
             <div className="userNav">
               {user && (

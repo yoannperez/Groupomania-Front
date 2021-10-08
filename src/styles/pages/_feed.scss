@@ -73,5 +73,57 @@
 
 .banner-img {
   position: relative;
-  top: 5px;
+}
+
+.createPost {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 15px;
+  height: fit-content;
+  hr {
+    padding: 0;
+    margin: 0;
+  }
+  p {
+    margin-top: 0;
+    padding-top: 0;
+    text-align: center;
+  }
+  p:hover {
+    cursor: pointer;
+  }
+  img {
+    margin: 3em auto;
+    width: 300px;
+  }
+}
+.postClose {
+  height: 50px;
+  overflow: hidden;
+}
+
+.userCommentContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 1em;
+  margin: 0;
+  // background-color: green;
+
+  .commentAndDate {
+    display: flex;
+    border-radius: 15px;
+    flex-direction: column;
+    padding: 0.5em;
+
+    align-items: bottom;
+    background-color: #f7f7f7;
+    .date {
+      font-weight: bold;
+      font-size: 0.7em;
+    }
+  }
 }
