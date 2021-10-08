@@ -29,9 +29,7 @@ const Profile = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // -----------   END OF:    Get User's Datas From API Function   -------------
-console.log('====================================');
-console.log(userData.isAdmin);
-console.log('====================================');
+
   // ---------------    OBJECT RETURNED TO VIRTUAL DOM    ------------------
   if (!user) {
     history.push("/");
