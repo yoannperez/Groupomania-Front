@@ -62,25 +62,24 @@ const Feed = () => {
       <div className="feedContainer">
         <form className="publicate" onSubmit={(e) => handleSubmit(e)}>
           <label htmlFor="textArea" className="labelHidden">
-           
-            Entrez votre texte
+                       Entrez votre texte
             <textarea style={{ border: error ? "1px solid red" : "1px solid #61dafb" }} id="textArea" onChange={(e) => setTextData(e.target.value)} placeholder="Que voulez-vous dire ?" value={content}></textarea>
           </label>
           <input type="submit" value="Publier" />
         </form>
         {error && <p style={{ color: error ? " red" : "1px solid #61dafb", textAlign: "center" }}> Veuillez écrire un texte plus long que 2 caracts</p>}
         <h1>Derniers articles</h1>
-        <ul>
+        <div>
           {newsData
             .sort((a, b) => b.id - a.id)
             .map((post) => (
               <Article key={post.id} article={post} />
             ))}
-        </ul>
+        </div>
       </div>
     );
   }
-  // -----------    END OF: OBJECT SEND TO VIRTUAL DOM    ----------
+  // -----------    END OF: OBJECT RETURNED TO VIRTUAL DOM    ----------
 };
 
 export default Feed;
