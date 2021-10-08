@@ -24,6 +24,7 @@ const Feed = () => {
   // -----------      Get Datas From API Function     ------------------
   const getData = () => {
     axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
+    // axios.defaults.baseURL = 'http://localhost:3333/';
     axios.get(process.env.REACT_APP_API_ADRESS+ "/api/posts/").then((res) => setNewsData(res.data));
   };
   // -----------   END OF:    Get Datas From API Function   -------------
@@ -34,6 +35,8 @@ const Feed = () => {
     if (content.length < 2) {
       setError(true);
     } else {
+      axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
+      // axios.defaults.baseURL = 'http://groupomania.sc1yperez.universe.wf/';
       axios
         .post(process.env.REACT_APP_API_ADRESS + "/api/posts/", {
           text: content,

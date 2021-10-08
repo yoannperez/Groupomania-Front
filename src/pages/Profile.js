@@ -16,6 +16,8 @@ const Profile = () => {
     if (user) {
       const getUserData = () => {
         axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
+        // axios.defaults.baseURL = 'http://groupomania.sc1yperez.universe.wf/';
+        
         axios.get(API_URL + "/api/users/" + user.userId).then((res) => {
           const imageUrl = res.data.user.imageUrl.replace("http://localhost:3000", API_URL);
 
