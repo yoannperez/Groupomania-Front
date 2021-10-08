@@ -52,7 +52,7 @@ class App extends Component {
       return (
         <div className="wrapper">
           {/* <nav className="navigationContainer" style={{ backgroundColor: admin ? "red" : "green" }}> */}
-          <nav className={ admin ? "navigationContainer admin" : "navigationContainer"}>
+          <nav className={admin ? "navigationContainer admin" : "navigationContainer"}>
             <Link to={"/"} className="brandName">
               <img src={banner} style={{ height: "30px" }} alt="banner image" className="banner-img" />
             </Link>
@@ -66,10 +66,15 @@ class App extends Component {
                   </li>
 
                   <li className="nav-item">
-                    <a href="/profile" className="nav-link">
-                      <img src={this.state.image} className="profilePicture" alt="avatar" />
-                      {admin ? "Profil" : "Admin"}
-                    </a>
+                    {admin ? (
+                      <a href="/profile" className="nav-link">
+                        <img src={this.state.image} className="profilePicture" alt="avatar" /> Admin{" "}
+                      </a>
+                    ) : (
+                      <a href="/profile" className="nav-link">
+                        <img src={this.state.image} className="profilePicture" alt="avatar" /> Profil{" "}
+                      </a>
+                    )}
                   </li>
                 </div>
               )}
