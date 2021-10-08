@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Switch, Route, Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css"
 import "./styles/index.scss";
 import AuthService from "./services/auth.service";
 import Login from "./components/login.component";
