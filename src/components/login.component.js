@@ -83,7 +83,7 @@ export default class Login extends Component {
       });
     }
   }
-//-------------------------------------------------------------------
+// ---------------    OBJECT RETURNED TO VIRTUAL DOM    ------------------
   render() {
     return (
       <div className="logContainer">
@@ -104,6 +104,7 @@ export default class Login extends Component {
             <div className="form-group">
               <label htmlFor="email">E-mail</label>
               <Input
+              id="email"
                 type="email"
                 className="form-control"
                 name="email"
@@ -116,6 +117,7 @@ export default class Login extends Component {
             <div className="form-group">
               <label htmlFor="password">Password</label>
               <Input
+              id="password"
                 type="password"
                 className="form-control"
                 name="password"
@@ -126,6 +128,7 @@ export default class Login extends Component {
             </div>
 
             <div className="form-group">
+              
               <button
                 className="btn btn-primary btn-block"
                 disabled={this.state.loading}
@@ -157,4 +160,5 @@ export default class Login extends Component {
       </div>
     );
   }
+   // -----------    END OF: OBJECT RETURNED TO VIRTUAL DOM    ----------
 }
