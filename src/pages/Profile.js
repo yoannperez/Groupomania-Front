@@ -43,7 +43,7 @@ const Profile = () => {
         <p>{userData.description}</p>
         <div className="update-container">
           <div className="top-part">
-            <img src={userData.imageUrl} alt="user-picture"></img>
+            <img src={userData.imageUrl} alt="user profile avatar"></img>
             <UploadImg user={userData} />
             {!userData.isAdmin && 
             <DeleteProfile id={userData.id} />

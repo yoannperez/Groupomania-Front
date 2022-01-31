@@ -14,24 +14,24 @@ const UploadImg = (userInfo) => {
   //   description: " Un truc",
   // }
   // -----------------      SEND Image to API     ------------------------
-  const sendProfile = (datas) => {
-    axios.defaults.headers.common["Authorization"] = "Bearer " + userToken.token;
-    axios
-      .put(
-        process.env.REACT_APP_API_ADRESS + "/api/users/" + userInfo.user.id,
-        datas
+  // const sendProfile = (datas) => {
+  //   axios.defaults.headers.common["Authorization"] = "Bearer " + userToken.token;
+  //   axios
+  //     .put(
+  //       process.env.REACT_APP_API_ADRESS + "/api/users/" + userInfo.user.id,
+  //       datas
 
-        //   {
-        //     headers: {
-        //         'Content-Type': 'multipart/form-data'
-        //       }
-        //   }
-      )
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+  //       //   {
+  //       //     headers: {
+  //       //         'Content-Type': 'multipart/form-data'
+  //       //       }
+  //       //   }
+  //     )
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err));
       
      
-  };
+  // };
 
   // -----------------   END OF: SEND Datas to API   --------------------
 

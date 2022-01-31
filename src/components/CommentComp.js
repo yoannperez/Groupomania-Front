@@ -55,7 +55,7 @@ const CommentComp = (comment) => {
       </div>
     );
   }
-  {
+  
     return (
       <div style={{ display: "flex", width: "100%" }}>
         <div style={{ width: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
@@ -68,7 +68,7 @@ const CommentComp = (comment) => {
         </div>
       </div>
     );
-  }
+  
 };
 // END OF : ------------    CREATE DOM    --------------------
 export default CommentComp;

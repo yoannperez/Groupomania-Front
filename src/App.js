@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component} from "react";
 import axios from "axios";
-import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 import "./styles/index.scss";
 import AuthService from "./services/auth.service";
 import Login from "./components/login.component";
@@ -8,24 +8,20 @@ import Register from "./components/register.component";
 import Feed from "./pages/Feed";
 import Profile from "./pages/Profile";
 import banner from "./assets/icon-left-font-monochrome-white.svg";
-
-import NotFound from "./pages/NotFound";
-// import userInfo from "./services/user.service";
+import AdminNav from "./components/Navbar/AdminNav";
+import UserNav from "./components/Navbar/UserNav";
 
 const user = AuthService.getCurrentUser();
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.logOut = this.logOut.bind(this);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
+
   state = {
     image: "",
     isAdmin: {},
   };
-  logOut() {
-    AuthService.logout();
-  }
 
   componentDidMount() {
     if (user) {
@@ -46,41 +42,12 @@ class App extends Component {
     }
   }
   render() {
-    const admin = this.state.isAdmin;
+
     if (user) {
       // If user as a Token
       return (
         <div className="wrapper">
-          {/* <nav className="navigationContainer" style={{ backgroundColor: admin ? "red" : "green" }}> */}
-          <nav className={admin ? "navigationContainer admin" : "navigationContainer"}>
-            <Link to={"/"} className="brandName">
-              <img src={banner} style={{ height: "30px" }} alt="banner image" className="banner-img" />
-            </Link>
-            <div className="userNav">
-              {user && (
-                <div className="navbar-nav">
-                  <li className="nav-item">
-                    <a href="/" className="nav-link" onClick={this.logOut}>
-                      LogOut
-                    </a>
-                  </li>
-
-                  <li className="nav-item">
-                    {admin ? (
-                      <a href="/profile" className="nav-link">
-                        <img src={this.state.image} className="profilePicture" alt="avatar" /> Admin{" "}
-                      </a>
-                    ) : (
-                      <a href="/profile" className="nav-link">
-                        <img src={this.state.image} className="profilePicture" alt="avatar" /> Profil{" "}
-                      </a>
-                    )}
-                  </li>
-                </div>
-              )}
-            </div>
-          </nav>
-
+          {this.state.isAdmin ? <AdminNav props={user} image={this.state.image} isAdmin={this.state.isAdmin} /> : <UserNav props={user} image={this.state.image} isAdmin={this.state.isAdmin} />}
           <Switch>
             <Route exact path="/" component={Feed} />
             <Route exact path="/profile" component={Profile} />
@@ -94,13 +61,12 @@ class App extends Component {
         <div className="wrapper">
           <nav className="navigationContainer">
             <Link to={"/"} className="brandName">
-              <img src={banner} style={{ height: "30px" }} alt="banner image" className="banner-img" />
+              <img src={banner} style={{ height: "30px" }} alt="banner groupomania" className="banner-img" />
             </Link>
           </nav>
 
           <div>
             <Switch>
-              {/* <Route exact path={["/", "/home"]} component={Home} /> */}
               <Route exact path="/" component={Login} />
               <Route exact path="/register" component={Register} />
               <Route component={Login} />
