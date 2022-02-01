@@ -1,10 +1,12 @@
 # Créez un réseau social d’entreprise.
-Vous trouverez dans ce repo les fichiers de la partie frontend rendus pour la soutenace du projet 07 \" Groupomania \" réalisé dans le cadre du parcours développeur web proposée sur la plateforme Openclassrooms: [https://openclassrooms.com/fr/paths/185-developpeur-web](https://openclassrooms.com/fr/paths/185-developpeur-web).
+Vous trouverez dans ce repo les fichiers rendus pour la soutenace du projet 07 \" Groupomania \" réalisé dans le cadre du parcours développeur web proposée sur la plateforme Openclassrooms: [https://openclassrooms.com/fr/paths/185-developpeur-web](https://openclassrooms.com/fr/paths/185-developpeur-web).
 
 ***
-Le projet principal se situe ici : [https://github.com/yoannperez/YoannPerez_7_11092021](https://github.com/yoannperez/YoannPerez_7_11092021)
 
 ## Frontend
+NodeJS, React, React-router, Axios.
+
+***
 
 Pour démarrer la partie frontend du projet, vous devrez ouvrir un second terminal (afin de laisser tourner le backend dans le premier.)
 
@@ -24,4 +26,3 @@ Finalement, pour lancer le frontend de l'application, depuis de dossier /fronten
 ```
 npm start
 ```
-

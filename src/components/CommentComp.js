@@ -74,7 +74,7 @@ const CommentComp = (comment) => {
       </div>
     );
   }
-  {
+  
     return (
       // If user is NOT owner or administrator
       <div className="userCommentContainer">
@@ -86,7 +86,7 @@ const CommentComp = (comment) => {
         </div>
       </div>
     );
-  }
+  
 };
 // END OF : ------------    CREATE DOM    --------------------
 export default CommentComp;

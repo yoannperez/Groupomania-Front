@@ -9,8 +9,33 @@ const UploadImg = (userInfo) => {
   const [file, setFile] = useState();
 
  
+  // {
+  //   username: "totoc6",
+  //   description: " Un truc",
+  // }
+  // -----------------      SEND Image to API     ------------------------
+  // const sendProfile = (datas) => {
+  //   axios.defaults.headers.common["Authorization"] = "Bearer " + userToken.token;
+  //   axios
+  //     .put(
+  //       process.env.REACT_APP_API_ADRESS + "/api/users/" + userInfo.user.id,
+  //       datas
 
- 
+  //       //   {
+  //       //     headers: {
+  //       //         'Content-Type': 'multipart/form-data'
+  //       //       }
+  //       //   }
+  //     )
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err));
+      
+     
+  // };
+
+  // -----------------   END OF: SEND Datas to API   --------------------
+
+  // console.log(user.user);
   const handlePicture = (e) => {
     e.preventDefault();
 

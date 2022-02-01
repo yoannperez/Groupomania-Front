@@ -2,24 +2,24 @@
 
 .navigationContainer {
   padding: 0 1em;
-  background-color: rgba($groupomania-blue, 0.8);
+
+  // height: 40px;
   margin: 0px 0;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  vertical-align: middle;
+  align-items: center;
+  justify-items: center;
+
   color: white;
+
   
-  .brandName {
-    // color: white;
-    text-transform: uppercase;
-    font-weight: 800;
-    font-size: 1.5rem;
-  }
+
 
   .navbar-item {
     color: salmon;
-    display: flex;
+    // display: flex;
     align-content: center;
     vertical-align: middle;
     a {
@@ -32,6 +32,13 @@
       position: relative;
       border-radius: 10px;
     }
+  }
+  
+  .banner-img {
+    height: 40px;
+    padding: 5px;
+    position: relative;
+    top:3px;
   }
   .userNav {
     display: flex;
@@ -51,6 +58,7 @@
         border-color: $groupomania-red;
     }
   }
+
   a {
     
     
@@ -72,7 +80,9 @@
   border-radius: 30px;
 }
 
-.admin {
- 
-  background-color: rgba($groupomania-red, 0.8);
-  }
+.adminNavColor {
+    background-color: rgba($groupomania-red, 0.8);
+    }
+.userNavColor {
+  background-color: rgba($groupomania-blue, 0.8);
+}
