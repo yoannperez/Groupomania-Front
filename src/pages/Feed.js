@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import Article from "../components/Article";
 import authService from "../services/auth.service";
 
@@ -13,7 +13,7 @@ const Feed = () => {
   const [content, setTextData] = useState("");
   const [error, setError] = useState(false);
   const user = authService.getCurrentUser();
-  const history = useHistory();
+  const history = useNavigate();
 
   useEffect(() => {
     if (user) {

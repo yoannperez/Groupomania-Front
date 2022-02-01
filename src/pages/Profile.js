@@ -1,14 +1,14 @@
 import axios from "axios";
 import { React, useEffect, useState } from "react";
 import AuthService from "../services/auth.service";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import UploadImg from "../components/Profil/UploadImg";
 import DeleteProfile from "../components/Profil/DeleteProfile";
 
 require("dotenv").config();
 
 const Profile = () => {
-  const history = useHistory();
+  const history = useNavigate();
   const API_URL = process.env.REACT_APP_API_ADRESS;
   const [userData, setUserData] = useState([]);
   const user = AuthService.getCurrentUser();
