@@ -32,6 +32,7 @@ const Feed = () => {
   // -----------------      SEND Datas to API     ------------------------
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     if (content.length < 2) {
       setError(true);
     } else {
