@@ -22,7 +22,7 @@ class App extends Component {
 
   componentDidMount() {
     if (user) {
-      require("dotenv").config();
+      
       axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
       axios.defaults.baseURL = "http://groupomania.sc1yperez.universe.wf/";
       axios

@@ -1,7 +1,7 @@
 
 import axios from "axios";
 import React from "react";
-require('dotenv').config()
+
 
 const DeleteProfile = (id) => {
 

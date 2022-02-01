@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import UploadImg from "../components/Profil/UploadImg";
 import DeleteProfile from "../components/Profil/DeleteProfile";
 
-require("dotenv").config();
 
 const Profile = () => {
   const history = useNavigate();

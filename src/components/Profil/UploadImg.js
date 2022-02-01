@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import authService from "../../services/auth.service";
 
 
-require("dotenv").config();
 
 const UploadImg = (userInfo) => {
   const userToken = authService.getCurrentUser();

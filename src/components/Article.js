@@ -5,7 +5,6 @@ import authService from "../services/auth.service";
 import Comments from "./Comments";
 import ArticleCardheaher from "./Article/ArticleCardheaher";
 const API_URL = process.env.REACT_APP_API_ADRESS;
-require("dotenv").config();
 
 const Article = ({ article }) => {
   const user = authService.getCurrentUser();

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Article from "../components/Article";
 import authService from "../services/auth.service";
 
-require("dotenv").config();
+
 
 const Feed = () => {
   // -----------     Constants     ------------------

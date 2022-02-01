@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import authService from "../services/auth.service";
 import DeleteComment from "./DeleteComment";
-require("dotenv").config();
+
 
 const CommentComp = (comment) => {
   const [isEditing, setIsEditing] = useState(false);

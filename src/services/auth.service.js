@@ -1,6 +1,5 @@
 import axios from "axios";
 
-require('dotenv').config()
 const API_URL = process.env.REACT_APP_API_ADRESS + "/api/auth/";
 
 class AuthService {

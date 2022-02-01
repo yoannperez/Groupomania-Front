@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import CommentComp from "./CommentComp";
 import authService from "../services/auth.service";
 // import { useHistory } from "react-router-dom";
-require('dotenv').config()
+
 
 const Comments = (article) => {
   const [commentData, setNewsData] = useState([]);

@@ -2,7 +2,7 @@ import React from "react";
 import banner from "../../assets/icon-left-font-monochrome-white.svg";
 import { Link } from "react-router-dom";
 import AuthService from "../../services/auth.service";
-require("dotenv").config();
+
 
 const UserNav = (user) => {
   let users = { ...user };
