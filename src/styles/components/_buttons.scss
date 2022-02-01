@@ -14,7 +14,7 @@
   text-align: center;
   transform: scale(1);
   outline: -webkit-focus-ring-color auto 0px;
-// ==> supression d'une bordure sur certains navigateurs
+  // ==> supression d'une bordure sur certains navigateurs
 
   &::after {
     content: "";
@@ -23,7 +23,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(255, 255, 255, 0.200);
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 50px;
     opacity: 0;
     transform: scale(1);
@@ -32,7 +32,7 @@
   }
   // Changement de la couleur de fond par opacité pour faciliter l'affichage sur des périphériques plus anciens
   &:hover {
-    cursor:pointer;
+    cursor: pointer;
     box-shadow: 0 5px 5px rgba($color-shadow, 0.8);
     transform: scale(1.01);
     &::after {
@@ -41,8 +41,8 @@
   }
 }
 // Padding du bouton pour les menu ==> classe modificateur du padding pour les pages menu
-.bigButton--menu{
-  padding: em(13) em(50)
+.bigButton--menu {
+  padding: em(13) em(50);
 }
 
 // ==> Passage à _fonctions pour la détermination des marges en em et rem en fonction de la marge désirée en fonction de la taille en pixels
