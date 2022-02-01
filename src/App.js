@@ -57,10 +57,12 @@ class App extends Component {
       // If user doesn't have a Token
       return (
         <div className="wrapper">
-          <nav className="navigationContainer">
-            <Link to={"/"} className="brandName">
-              <img src={banner} style={{ height: "30px" }} alt="banner groupomania" className="banner-img" />
+          <nav className="navigationContainer userNavColor">
+            <div >
+            <Link to={"/"}>
+              <img src={banner} alt="banner groupomania" className="banner-img" />
             </Link>
+            </div>
           </nav>
           <div>
             <Routes>

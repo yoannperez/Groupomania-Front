@@ -1,6 +1,6 @@
 import React from "react";
 import banner from "../../assets/icon-left-font-monochrome-white.svg";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import AuthService from "../../services/auth.service";
 require("dotenv").config();
 
@@ -13,10 +13,12 @@ const AdminNav = (user) => {
 
   return (
     <>
-      <nav className={"navigationContainer admin"}>
-        <Link to={"/"} className="brandName">
-          <img src={banner} style={{ height: "30px" }} alt="banner groupomania" className="banner-img" />
-        </Link>
+      <nav className={"navigationContainer adminNavColor"}>
+        <div>
+          <Link to={"/"}>
+            <img src={banner} alt="banner groupomania" className="banner-img" />
+          </Link>
+        </div>
         <div className="userNav">
           {user && (
             <div className="navbar-nav">

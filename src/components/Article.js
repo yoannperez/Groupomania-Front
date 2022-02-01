@@ -72,7 +72,7 @@ const Article = ({ article }) => {
       </div>
     );
   }
-  {
+  
     return (
       <div className="article" style={{ background: isEditing ? "#f3feff" : "white", border: "2px solid white" }}>
         <ArticleCardheaher article={article} />
@@ -83,7 +83,7 @@ const Article = ({ article }) => {
         <Comments comment={article.id} />
       </div>
     );
-  }
+  
 };
 // END OF : ------------    CREATE DOM    --------------------
 

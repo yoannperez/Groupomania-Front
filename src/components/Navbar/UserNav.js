@@ -13,10 +13,12 @@ const UserNav = (user) => {
 
   return (
     <>
-      <nav className={"navigationContainer"}>
-        <Link to={"/"} className="brandName">
-          <img src={banner} style={{ height: "30px" }} alt="banner groupomania" className="banner-img" />
-        </Link>
+      <nav className={"navigationContainer userNavColor"}>
+        <div>
+          <Link to={"/"}>
+            <img src={banner} alt="banner groupomania" className="banner-img" />
+          </Link>
+        </div>
         <div className="userNav">
           <div className="navbar-nav">
             <li className="nav-item">
