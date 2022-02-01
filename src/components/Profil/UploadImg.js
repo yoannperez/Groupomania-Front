@@ -2,45 +2,24 @@ import axios from "axios";
 import React, { useState } from "react";
 import authService from "../../services/auth.service";
 
-
-
 const UploadImg = (userInfo) => {
   const userToken = authService.getCurrentUser();
   const [file, setFile] = useState();
- 
-  // {
-  //   username: "totoc6",
-  //   description: " Un truc",
-  // }
-  // -----------------      SEND Image to API     ------------------------
-  // const sendProfile = (datas) => {
-  //   axios.defaults.headers.common["Authorization"] = "Bearer " + userToken.token;
-  //   axios
-  //     .put(
-  //       process.env.REACT_APP_API_ADRESS + "/api/users/" + userInfo.user.id,
-  //       datas
 
-  //       //   {
-  //       //     headers: {
-  //       //         'Content-Type': 'multipart/form-data'
-  //       //       }
-  //       //   }
-  //     )
-  //     .then((res) => console.log(res))
-  //     .catch((err) => console.log(err));
-      
-     
+  // const useForceUpdate = () => {
+  //   const [value, setValue] = useState(0); // integer state
+  //   return () => setValue((value) => value + 1); // update the state to force render
   // };
+
+  // const forceUpdate = useForceUpdate();
 
   // -----------------   END OF: SEND Datas to API   --------------------
 
-  // console.log(user.user);
   const handlePicture = (e) => {
     e.preventDefault();
 
     const data = new FormData();
-    
-    
+
     data.append("image", file);
     axios.defaults.headers.common["Authorization"] = "Bearer " + userToken.token;
     axios
@@ -49,36 +28,33 @@ const UploadImg = (userInfo) => {
           "Content-Type": "multipart/form-data",
         },
       })
-      .then((res) => "OK!")
+      .then((res) => {
+        console.log("retour serveur image");
+
+        setTimeout(() => {
+          window.location.reload();
+          // forceUpdate();
+        }, 2000);
+      })
       .catch((err) => console.log(err));
-      setTimeout(() => {
-        window.location.reload();
-      }, 2000);
   };
 
-  //
-  // sendProfile({
-  //   username: "Mon nouveau nom 2",
-  //   description: " J'ai une super description !",
-  // });
-
   return (
-    
-      <form action="" onSubmit={handlePicture} className="upload-pic">
-        <label htmlFor="file">Changer l'image</label>
-        <input className="inputfile"
-          type="file"
-          id="file"
-          name="file"
-          accept=".jpg, .jpeg, .png"
-          onChange={(e) => {
-            setFile(e.target.files[0]);
-          }}
-        ></input>
-        <br />
-        <input type="submit" value="Envoyer" />
-      </form>
-    
+    <form action="" onSubmit={handlePicture} className="upload-pic">
+      <label htmlFor="file">Changer l'image</label>
+      <input
+        className="inputfile"
+        type="file"
+        id="file"
+        name="file"
+        accept=".jpg, .jpeg, .png"
+        onChange={(e) => {
+          setFile(e.target.files[0]);
+        }}
+      ></input>
+      <br />
+      <input type="submit" value="Envoyer" />
+    </form>
   );
 };
 

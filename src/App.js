@@ -24,12 +24,13 @@ class App extends Component {
     if (user) {
       
       axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
-      axios.defaults.baseURL = "http://groupomania.sc1yperez.universe.wf/";
+      axios.defaults.baseURL = process.env.REACT_APP_API_ADRESS;
       axios
         .get(process.env.REACT_APP_API_ADRESS + "/api/users/" + user.userId)
 
         .then((response) => {
-          const image = response.data.user.imageUrl.replace("http://localhost:3000", process.env.REACT_APP_API_ADRESS);
+          const image = response.data.user.imageUrl.replace("https://localhost:3000", process.env.REACT_APP_API_ADRESS);
+          console.log(response);
           this.setState({ image });
           const isAdmin = response.data.user.isAdmin;
           this.setState({ isAdmin });
