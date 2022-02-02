@@ -29,7 +29,7 @@ const UserNav = (user) => {
 
             <li className="nav-item">
               <a href="/profile" className="nav-link">
-                <img src={users.image} className="profilePicture" alt="avatar" /> Profil{" "}
+                <img src={users.image} className="profilePicture" alt="avatar" /> {users.props.username}
               </a>
             </li>
           </div>
