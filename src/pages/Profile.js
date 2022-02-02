@@ -1,10 +1,9 @@
 import axios from "axios";
 import { React, useEffect, useState } from "react";
 import AuthService from "../services/auth.service";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import UploadImg from "../components/Profil/UploadImg";
 import DeleteProfile from "../components/Profil/DeleteProfile";
-
 
 const Profile = () => {
   const history = useNavigate();
@@ -44,11 +43,17 @@ const Profile = () => {
           <div className="top-part">
             <img src={userData.imageUrl} alt="user profile avatar"></img>
             <UploadImg user={userData} />
-            {!userData.isAdmin && 
-            <DeleteProfile id={userData.id} />
-            }
+            {!userData.isAdmin && <DeleteProfile id={userData.id} />}
           </div>
         </div>
+        <li className="nav-item">
+            {/* <button className="btn btn-primary btn-block" >CLOSE</button> */}
+          <a href="/" className="btn btn-primary btn-block">
+            {/* <img src={users.image} className="profilePicture" alt="avatar" /> Profil{" "} */}
+
+          x FERMER x
+          </a>
+        </li>
       </div>
     );
   }
