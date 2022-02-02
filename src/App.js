@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {useEffect, useState } from "react";
 import axios from "axios";
 import { Routes, Route, Link, NavLink } from "react-router-dom";
 import "./styles/index.scss";
@@ -10,95 +10,95 @@ import Profile from "./pages/Profile";
 import banner from "./assets/icon-left-font-monochrome-white.svg";
 import AdminNav from "./components/Navbar/AdminNav";
 import UserNav from "./components/Navbar/UserNav";
-import UserService from "./services/user.service";
+// import UserService from "./services/user.service";
 import logo from "./assets/icon.svg";
 
-const user = AuthService.getCurrentUser();
 
-class App extends Component {
-  state = {
-    image: "",
-    isAdmin: {},
-  };
 
-  componentDidMount() {
-    if (user) {
-      console.log("truc" + UserService.getUser(user));
-      UserService.getUser(user);
-      // console.log(userData);
 
-      // axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
-      // axios.defaults.baseURL = process.env.REACT_APP_API_ADRESS;
-      // axios
-      //   .get(process.env.REACT_APP_API_ADRESS + "/api/users/" + user.userId)
+const App = () => {
+  const [image, setImage] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [loaded, setLoading] = useState(false)
+  const user = AuthService.getCurrentUser();
+  
+  useEffect(() => {
+    
 
-      //   .then((response) => {
-      //     const image = response.data.user.imageUrl.replace("https://localhost:3000", process.env.REACT_APP_API_ADRESS);
-      //     this.setState({ image });
-      //     const isAdmin = response.data.user.isAdmin;
-      //     this.setState({ isAdmin });
-      //     return { image, isAdmin };
-      //   })
+    const getData = (response, err) => {
+      if (user) {
+        axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
+        axios.defaults.baseURL = process.env.REACT_APP_API_ADRESS;
+        axios
+          .get(process.env.REACT_APP_API_ADRESS + "/api/users/" + user.userId)
+          .then((response) => {
+            setImage(response.data.user.imageUrl.replace("https://localhost:3001", process.env.REACT_APP_API_ADRESS));
+            setIsAdmin(response.data.user.isAdmin);
+            setLoading(true)
+          })
+          .catch((response) => Error);
+      }
+    };
+    getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-      //   .catch((response) => Error);
-    }
-  }
-  render() {
-    if (user) {
-      // If user as a Token
-      return (
-        <div className="wrapper">
-          {this.state.isAdmin ? <AdminNav props={user} image={this.state.image} isAdmin={this.state.isAdmin} /> : <UserNav props={user} image={this.state.image} isAdmin={this.state.isAdmin} />}
-          <Routes>
-            <Route exact path="/" element={<Feed />} />
-            <Route exact path="/profile" element={<Profile />} />
-            <Route component={Feed} />
-          </Routes>
-        </div>
-      );
-    } else {
-      // If user doesn't have a Token
-      return (
-        <div className="wrapper">
-          <nav className="navigationContainer userNavColor">
-            <div>
-              <Link to={"/"}>
-                <img src={banner} alt="banner groupomania" className="banner-img" />
-              </Link>
-            </div>
-          </nav>
+  
+
+  if (user && loaded) {
+    // If user as a Token
+    return (
+      <div className="wrapper">
+        {isAdmin ? <AdminNav props={user} image={image} isAdmin={isAdmin} /> : <UserNav props={user} image={image} isAdmin={isAdmin} />}
+        <Routes>
+          <Route exact path="/" element={<Feed />} />
+          <Route exact path="/profile" element={<Profile />} />
+          {/* <Route component={Feed} /> */}
+        </Routes>
+      </div>
+    );
+  } else {
+    // If user doesn't have a Token
+    return (
+      <div className="wrapper">
+        <nav className="navigationContainer userNavColor">
           <div>
-            {/* <div>coucou</div> */}
-            <div className="logContainer">
-              <div className="card-container">
-                <img src={logo} alt="profile-img" className="" />
+            <Link to={"/"}>
+              <img src={banner} alt="banner groupomania" className="banner-img" />
+            </Link>
+          </div>
+        </nav>
+        <div>
+          {/* <div>coucou</div> */}
+          <div className="logContainer">
+            <div className="card-container">
+              <img src={logo} alt="profile-img" className="" />
 
-                <ul style={{ display: "flex", gap: "10px" }}>
-                  <li >
-                    <NavLink default className={"link"} to={"/"}>
-                      {" "}
-                      Se connecter{" "}
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to={"/register"}> S'enregistrer </NavLink>
-                  </li>
-                </ul>
+              <ul style={{ display: "flex", gap: "10px" }}>
+                <li>
+                  <NavLink default className={"link"} to={"/"}>
+                    {" "}
+                    Se connecter{" "}
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to={"/register"}> S'enregistrer </NavLink>
+                </li>
+              </ul>
 
-                <Routes>
-                  <Route exact path="/" element={<Login />} />
-                  <Route exact path="/register" element={<Register />} />
-                </Routes>
-              </div>
+              <Routes>
+                <Route exact path="/" element={<Login />} />
+                <Route exact path="/register" element={<Register />} />
+              </Routes>
             </div>
           </div>
-          <div className="wrapper footerBar">
-            <h3> Le réseau qui vous ressemble et qui nous rassemble</h3>
-          </div>
         </div>
-      );
-    }
+        <div className="wrapper footerBar">
+          <h3> Le réseau qui vous ressemble et qui nous rassemble</h3>
+        </div>
+      </div>
+    );
   }
-}
+};
 
 export default App;
