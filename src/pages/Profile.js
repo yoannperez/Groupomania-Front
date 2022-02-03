@@ -1,58 +1,40 @@
-import axios from "axios";
-import { React, useEffect, useState } from "react";
+import { React} from "react";
 import AuthService from "../services/auth.service";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import UploadImg from "../components/Profil/UploadImg";
 import DeleteProfile from "../components/Profil/DeleteProfile";
 
-const Profile = () => {
-  const history = useNavigate();
-  const API_URL = process.env.REACT_APP_API_ADRESS;
-  const [userData, setUserData] = useState([]);
+const Profile = ({ utilisateur, refreshState, setRefreshState}) => {
+  let navigate = useNavigate();
   const user = AuthService.getCurrentUser();
 
-  // -----------      Get User's Datas From API Function     ------------------
-  useEffect(() => {
-    if (user) {
-      const getUserData = () => {
-        axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
-        axios.get(API_URL + "/api/users/" + user.userId).then((res) => {
-          const imageUrl = res.data.user.imageUrl.replace("http://localhost:3000", API_URL);
-
-          setUserData({ id: res.data.user.id, username: res.data.user.username, email: res.data.user.email, isAdmin: res.data.user.isAdmin, description: res.data.user.description, imageUrl: imageUrl, createdAt: res.data.user.createdA, updatedAt: res.data.user.updatedAt });
-        });
-      };
-      getUserData();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  // -----------   END OF:    Get User's Datas From API Function   -------------
 
   // ---------------    OBJECT RETURNED TO VIRTUAL DOM    ------------------
   if (!user) {
-    history.push("/");
+    // history.push("/");
+    navigate("/")
+    
 
     return null;
   } else {
     return (
       <div className="profil-container">
-        <h1>Profile</h1>
-        <h2>{userData.username}</h2>
-        <p>{userData.description}</p>
+        <h1>Profile Settings</h1>
+        <h2>{utilisateur.username}</h2>
+        <p>{utilisateur.description}</p>
         <div className="update-container">
           <div className="top-part">
-            <img src={userData.imageUrl} alt="user profile avatar"></img>
-            <UploadImg user={userData} />
-            {!userData.isAdmin && <DeleteProfile id={userData.id} />}
+            <img src={utilisateur.imageUrl} alt="user profile avatar"></img>
+            <UploadImg utilisateur={utilisateur} refreshState={refreshState} setRefreshState={setRefreshState}/>
+            {!utilisateur.isAdmin && <DeleteProfile id={utilisateur.id} />}
           </div>
         </div>
         <li className="nav-item">
-            {/* <button className="btn btn-primary btn-block" >CLOSE</button> */}
-          <a href="/" className="btn btn-primary btn-block">
-            {/* <img src={users.image} className="profilePicture" alt="avatar" /> Profil{" "} */}
-
-          x FERMER x
-          </a>
+          {/* <button className="btn btn-primary btn-block" >CLOSE</button> */}
+          {/* <img src={users.image} className="profilePicture" alt="avatar" /> Profil{" "} */}
+          <Link to="/" className="btn btn-primary btn-block">
+            x FERMER x
+          </Link>
         </li>
       </div>
     );

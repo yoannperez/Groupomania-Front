@@ -29,10 +29,10 @@ const AdminNav = (user) => {
               </li>
 
               <li className="nav-item">
-                <a href="/profile" className="nav-link">
-                  <img src={users.image} className="profilePicture" alt="avatar" /> Admin{" "}
-                </a>
-              </li>
+              <Link to={"/profile"}>
+                <img src={users.image} className="profilePicture" alt="avatar" /> {users.props.username}
+              </Link>
+            </li>
             </div>
           )}
         </div>

@@ -2,20 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import authService from "../../services/auth.service";
 
-const UploadImg = (userInfo) => {
+const UploadImg = ({utilisateur, refreshState, setRefreshState}) => {
   const userToken = authService.getCurrentUser();
   const [file, setFile] = useState();
 
-  // const useForceUpdate = () => {
-  //   const [value, setValue] = useState(0); // integer state
-  //   return () => setValue((value) => value + 1); // update the state to force render
-  // };
-
-  // const forceUpdate = useForceUpdate();
-
-  // -----------------   END OF: SEND Datas to API   --------------------
-
-  const handlePicture = (e) => {
+   const handlePicture = (e) => {
     e.preventDefault();
 
     const data = new FormData();
@@ -23,7 +14,7 @@ const UploadImg = (userInfo) => {
     data.append("image", file);
     axios.defaults.headers.common["Authorization"] = "Bearer " + userToken.token;
     axios
-      .put(process.env.REACT_APP_API_ADRESS + "/api/users/" + userInfo.user.id, data, {
+      .put(process.env.REACT_APP_API_ADRESS + "/api/users/" + utilisateur.id, data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -32,8 +23,7 @@ const UploadImg = (userInfo) => {
         console.log("retour serveur image");
 
         setTimeout(() => {
-          window.location.reload();
-          // forceUpdate();
+          setRefreshState(!refreshState)
         }, 2000);
       })
       .catch((err) => console.log(err));

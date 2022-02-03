@@ -1,4 +1,5 @@
 import axios from "axios";
+// import { useNavigate } from "react-router-dom";
 
 const API_URL = process.env.REACT_APP_API_ADRESS + "/api/auth/";
 
@@ -20,6 +21,8 @@ class AuthService {
 
   logout() {
     localStorage.removeItem("user");
+    // let navigate = useNavigate();
+    // navigate("/")
   }
 
   register(username, email, password) {

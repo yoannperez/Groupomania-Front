@@ -3,7 +3,6 @@ import banner from "../../assets/icon-left-font-monochrome-white.svg";
 import { Link } from "react-router-dom";
 import AuthService from "../../services/auth.service";
 
-
 const UserNav = (user) => {
   let users = { ...user };
 
@@ -21,16 +20,16 @@ const UserNav = (user) => {
         </div>
         <div className="userNav">
           <div className="navbar-nav">
-            <li className="nav-item">
+            <li className="nav-item" onClick={() => logOut()}>
               <a href="/" className="nav-link" onClick={() => logOut()}>
                 LogOut
               </a>
             </li>
 
             <li className="nav-item">
-              <a href="/profile" className="nav-link">
+              <Link to={"/profile"}>
                 <img src={users.image} className="profilePicture" alt="avatar" /> {users.props.username}
-              </a>
+              </Link>
             </li>
           </div>
         </div>

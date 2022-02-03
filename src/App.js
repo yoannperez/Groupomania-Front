@@ -12,13 +12,13 @@ import AdminNav from "./components/Navbar/AdminNav";
 import UserNav from "./components/Navbar/UserNav";
 // import UserService from "./services/user.service";
 import logo from "./assets/icon.svg";
-import SendToState from "./components/SendToState";
 
 const App = () => {
 
   const [utilisateur, setUtilisateur] = useState({})
   const [loaded, setLoading] = useState(false);
-  
+  const [refreshState, setRefreshState] = useState(false);
+
   const user = AuthService.getCurrentUser();
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const App = () => {
     };
     getData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [refreshState]);
   
   if (user && loaded) {
     // If user as a Token
@@ -52,9 +52,7 @@ const App = () => {
         {/* <SendToState cart={cart} updateCart={updateCart} /> */}
         <Routes>
           <Route exact path="/" element={<Feed />} />
-          <Route exact path="/profile" element={<Profile />} />
-          {/* <Route exact path="/profile" element={<Profile email={email} setEmail={setEmail}/>} /> */}
-          {/* <Route component={Feed} /> */}
+          <Route exact path="/profile" element={<Profile utilisateur={utilisateur} setUtilisateur={setUtilisateur} refreshState={refreshState} setRefreshState={setRefreshState}/>} />
         </Routes>
       </div>
     );
@@ -70,7 +68,6 @@ const App = () => {
           </div>
         </nav>
         <div>
-          {/* <div>coucou</div> */}
           <div className="logContainer">
             <div className="card-container">
               <img src={logo} alt="profile-img" className="" />

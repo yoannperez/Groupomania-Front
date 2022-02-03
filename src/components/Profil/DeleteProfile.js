@@ -3,11 +3,12 @@ import axios from "axios";
 import React from "react";
 
 
-const DeleteProfile = (id) => {
+const DeleteProfile = ({id}) => {
+
 
     const handleDelete = () => {
        
-        axios.delete( process.env.REACT_APP_API_ADRESS + "/api/users/" + id.id);
+        axios.delete( process.env.REACT_APP_API_ADRESS + "/api/users/" + id);
         localStorage.removeItem("user");
         setTimeout(() => {
 
