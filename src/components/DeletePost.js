@@ -2,11 +2,11 @@ import axios from "axios";
 import React from "react";
 
 
-const DeletePost = ({ id }) => {
+const DeletePost = ({ id, reload, setReload }) => {
   const handleDelete = () => {
     axios.delete(process.env.REACT_APP_API_ADRESS+ "/api/posts/" + id);
     setTimeout(() => {
-      window.location.reload();
+      setReload(!reload)
     }, 1000);
   };
 

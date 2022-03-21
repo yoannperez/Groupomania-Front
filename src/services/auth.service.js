@@ -1,9 +1,9 @@
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
 
 const API_URL = process.env.REACT_APP_API_ADRESS + "/api/auth/";
 
 class AuthService {
+  // Login user with user email and passord
   login(email, password) {
     return axios
       .post(API_URL + "signin", {
@@ -20,11 +20,10 @@ class AuthService {
   }
 
   logout() {
-    localStorage.removeItem("user");
-    // let navigate = useNavigate();
-    // navigate("/")
+    localStorage.removeItem("user"); // remove LocalStorage
   }
 
+  // Register User
   register(username, email, password) {
     return axios.post(API_URL + "signup", {
       username,
@@ -33,6 +32,7 @@ class AuthService {
     });
   }
 
+  // Get current user from lacal storage
   getCurrentUser() {
     return JSON.parse(localStorage.getItem('user'));;
   }

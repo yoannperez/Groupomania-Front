@@ -6,7 +6,7 @@ import Comments from "./Comments";
 import ArticleCardheaher from "./Article/ArticleCardheaher";
 const API_URL = process.env.REACT_APP_API_ADRESS;
 
-const Article = ({ article }) => {
+const Article = ({ article, reload, setReload }) => {
   const user = authService.getCurrentUser();
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState("");
@@ -65,7 +65,7 @@ const Article = ({ article }) => {
         <div className="btn-container">
           {isEditing ? <button onClick={handleEdit}>Valider</button> : <button onClick={() => setIsEditing(true)}>Edit</button>}
 
-          <DeletePost id={article.id} />
+          <DeletePost id={article.id} reload={reload} setReload={setReload}/>
         </div>
         <Comments comment={article.id} />
       </div>
