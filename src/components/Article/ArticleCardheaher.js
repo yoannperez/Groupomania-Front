@@ -1,20 +1,8 @@
 import React from "react";
+import {dateParser} from '../../globalFunctions/globalFunctions' 
 
 const ArticleCardheaher = (article) => {
 
- // -----------------    DATE PARSER    -----------------------
- const dateParser = (date) => {
-    let newDate = new Date(date).toLocaleDateString("fr-FR", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric",
-    });
-    return newDate;
-  };
-  // END OF : ------------    DATE PARSER    --------------------
 
   return (
     <div>
