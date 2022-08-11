@@ -9,7 +9,7 @@ COPY package*.json ./
 RUN npm install -qy
 # Copy app to container
 COPY . .
-EXPOSE 3000
+EXPOSE 3333
 
 # Run the "dev" script in package.json
 CMD npm run start

@@ -6,7 +6,7 @@ import Comments from "./Comments";
 import ArticleCardheaher from "./Article/ArticleCardheaher";
 const API_URL = process.env.REACT_APP_API_ADRESS;
 
-const Article = ({ article, reload, setReload }) => {
+const Article = ({ article, refresh }) => {
   const user = authService.getCurrentUser();
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState("");
@@ -33,9 +33,7 @@ const Article = ({ article, reload, setReload }) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  // -----------   END OF:    Get User's Datas From API Function   -------------
 
-  // ---------------------    MODIFY POST LOGIC   ----------------
   const handleEdit = () => {
     const data = {
       text: editedText ? editedText : article.text,
@@ -43,9 +41,7 @@ const Article = ({ article, reload, setReload }) => {
     axios.put(process.env.REACT_APP_API_ADRESS + "/api/posts/" + article.id, data);
     setIsEditing(false);
   };
-  // END OF : ------------    MODIFY POST LOGIC   ----------------
 
-  // ---------------------    CREATE DOM    ----------------------
   if (article.UserId === user.userId || userData.isAdmin) {
     return (
       <div className="article" style={{ background: isEditing ? "#f3feff" : "white", border: "2px solid white" }}>
@@ -65,7 +61,7 @@ const Article = ({ article, reload, setReload }) => {
         <div className="btn-container">
           {isEditing ? <button onClick={handleEdit}>Valider</button> : <button onClick={() => setIsEditing(true)}>Edit</button>}
 
-          <DeletePost id={article.id} reload={reload} setReload={setReload}/>
+          <DeletePost id={article.id} refresh={refresh}/>
         </div>
         <Comments comment={article.id} />
       </div>

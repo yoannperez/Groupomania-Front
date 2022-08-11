@@ -79,8 +79,7 @@ const App = () => {
                                 <ul style={{ display: "flex", gap: "10px" }}>
                                     <li>
                                         <NavLink default className={"link"} to={"/"}>
-                                            {" "}
-                                            Se connecter{" "}
+                                            Se connecter
                                         </NavLink>
                                     </li>
                                     <li>
