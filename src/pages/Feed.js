@@ -1,16 +1,18 @@
 import axios from "axios";
-import {useEffect, useState} from "react";
+import {useEffect, useState, useContext} from "react";
 import {useNavigate} from "react-router-dom";
 import Article from "../components/Article";
 import authService from "../services/auth.service";
 import NewPost from "../components/NewPost/NewPost";
+import {useStateValue} from "../utils/context/StateProvider";
 
 const Feed = () => {
 	const history = useNavigate();
-	const user = authService.getCurrentUser();
+	// const user = authService.getCurrentUser();
 	const [newsData, setNewsData] = useState([]);
 	const [reload, setReload] = useState(false);
 	const [spinner, setSpinner] = useState(false);
+	const [{user}, dispatch] = useStateValue();
 
 	useEffect(() => {
 		if (user) {
@@ -32,15 +34,15 @@ const Feed = () => {
 		setReload(!reload);
 	};
 
-	if (user) {
+	if (!user) {
 		history.push("/");
 		return null;
 	} else {
 		return (
 			<div className='feedContainer'>
-				<NewPost user={user} refresh={refresh} />
-				<h1>Derniers articles</h1>
-				{spinner ? (
+				{/* <NewPost user={user} refresh={refresh} /> */}
+				<h1>FEED PAGE Derniers articles</h1>
+				{/* {spinner ? (
 					<div className='Loader'></div>
 				) : (
 					<div>
@@ -50,7 +52,7 @@ const Feed = () => {
 								<Article key={post.id} article={post} refresh={refresh} />
 							))}
 					</div>
-				)}
+				)} */}
 			</div>
 		);
 	}

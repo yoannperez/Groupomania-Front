@@ -18,13 +18,9 @@ const getUser = (user) => {
     .catch((response) => Error);
 };
 
-const coucou = () => {
-  console.log("coucou");
-};
 
 const exportedObject = {
   getUser,
-  coucou,
 };
 
 export default exportedObject;
