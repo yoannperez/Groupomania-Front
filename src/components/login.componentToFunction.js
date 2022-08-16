@@ -1,42 +1,27 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
-// import CheckButton from "react-validation/build/button";
+import {useForm} from "react-hook-form";
 
 import {login} from "../services/authService";
 import {useStateValue} from "../utils/context/StateProvider";
 import {actionTypes} from "../utils/Reducer/Reducer";
 
-const required = (value) => {
-	if (!value) {
-		return (
-			<div className='alert alert-danger' role='alert'>
-				This field is required!
-			</div>
-		);
-	}
-};
-
 const Login = () => {
+	const {
+		register,
+		handleSubmit,
+		formState: {errors},
+	} = useForm();
 	const navigate = useNavigate();
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [loading, setLoading] = useState(false);
+
 	const [message, setMessage] = useState("");
 	const [{user}, dispatch] = useStateValue();
 
-	const onChangeUsername = (e) => {
-		setEmail(e.target.value);
+	const onSubmit = (credentials) => {
+		fetchUser(credentials);
 	};
 
-	const onChangePassword = (e) => {
-		setPassword(e.target.value);
-	};
-
-	const fetchUser = async () => {
-		// handleToggle();
-		setLoading("true");
+	const fetchUser = async ({email, password}) => {
 		try {
 			const {data} = await login(email, password);
 			dispatch({
@@ -45,56 +30,37 @@ const Login = () => {
 			});
 			localStorage.setItem("user", JSON.stringify(data));
 			navigate("/");
-			//   setProducts(data);
+			
 		} catch (error) {
 			console.log("Something is wrong");
 			const resMessage =
 				(error.response && error.response.data && error.response.data.message) ||
 				error.message ||
 				error.toString();
-			setLoading(false);
 			setMessage(resMessage);
 		}
-		// handleClose();
-	};
-
-	const handleLogin = (e) => {
-		e.preventDefault();
-		fetchUser();
 	};
 
 	return (
 		<>
-			<Form onSubmit={(e) => handleLogin(e)}>
+			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className='form-group'>
-					<label htmlFor='email'>E-mail</label>
-					<Input
+					{/* <label htmlFor='email'>E-mail</label> */}
+					<input
 						type='email'
-						className='form-control'
-						name='email'
-						value={email}
-						onChange={(e) => onChangeUsername(e)}
-						validations={[required]}
+						placeholder='Email'
+						{...register("email", {required: true, pattern: /^\S+@\S+$/i})}
 					/>
+					{errors.email && <span className='alert'>Veuillez indiquer un email valid</span>}
 				</div>
 
 				<div className='form-group'>
-					<label htmlFor='password'>Password</label>
-					<Input
+					<input
 						type='password'
-						className='form-control'
-						name='password'
-						value={password}
-						onChange={(e) => onChangePassword(e)}
-						validations={[required]}
+						placeholder='password'
+						{...register("password", {required: true})}
 					/>
-				</div>
-
-				<div className='form-group'>
-					<button className='btn btn-primary btn-block' disabled={loading}>
-						{loading && <span className='spinner-border spinner-border-sm'></span>}
-						<span>Login</span>
-					</button>
+					{errors.password && <span className='alert'>Mot de passe invalid</span>}
 				</div>
 
 				{message && (
@@ -104,7 +70,9 @@ const Login = () => {
 						</div>
 					</div>
 				)}
-			</Form>
+
+				<input type='submit' className="btn btn-primary"/>
+			</form>
 		</>
 	);
 };

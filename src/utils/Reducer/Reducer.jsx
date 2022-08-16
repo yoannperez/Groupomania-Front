@@ -1,5 +1,10 @@
-export const initialState = {user: null};
-export const actionTypes = {SET_USER: "SET_USER"};
+export const initialState = {
+	user: null,
+	auth: null};
+	
+export const actionTypes = {
+	SET_USER: "SET_USER",
+};
 
 
 const reducer = (state, action) => {

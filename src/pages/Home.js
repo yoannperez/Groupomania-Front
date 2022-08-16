@@ -15,13 +15,13 @@ const Home = () => {
 
 	return (
 		<div className='wrapper'>
-            <h1>HomePage</h1>
+			<h1>Home</h1>
 			{/* {user.isAdmin ? (
 				<AdminNav props={user} image={user.imageUrl} isAdmin={user.isAdmin} />
 			) : (
 				<UserNav props={user} image={user.imageUrl} isAdmin={user.isAdmin} />
-			)} */}
-			{/* <Routes>
+			)}
+			<Routes>
 				<Route exact path='/' element={<Feed />} />
 				<Route
 					exact

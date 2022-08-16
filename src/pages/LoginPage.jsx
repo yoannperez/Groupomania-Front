@@ -19,23 +19,23 @@ const LoginPage = () => {
 				</nav>
 				<div>
 					<div className='logContainer'>
+					{/* <Login /> */}
 						<div className='card-container'>
 							<img src={logo} alt='profile-img' className='' />
-
 							<ul style={{display: "flex", gap: "10px"}}>
 								<li>
-									<NavLink default className={"link"} to={"/"}>
+									<NavLink default className={"link"} to="/">
 										Se connecter
 									</NavLink>
 								</li>
 								<li>
-									<NavLink to={"/register"}> S'enregistrer </NavLink>
+									<NavLink to="/register"> S'enregistrer </NavLink>
 								</li>
 							</ul>
-
+							
 							<Routes>
-								<Route exact path='/' element={<Login />} />
-								<Route exact path='/register' element={<Register />} />
+								<Route path='/' element={<Login />} />
+								<Route path='/register' element={<Register />} />
 							</Routes>
 						</div>
 					</div>

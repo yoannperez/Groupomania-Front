@@ -6,6 +6,7 @@ import DeleteProfile from "../components/Profil/DeleteProfile";
 import {useStateValue} from "../utils/context/StateProvider";
 
 const Profile = ({utilisateur, refreshState, setRefreshState}) => {
+
 	let navigate = useNavigate();
 	const [{user}, dispatch] = useStateValue();
 
@@ -16,9 +17,10 @@ const Profile = ({utilisateur, refreshState, setRefreshState}) => {
 		return null;
 	} else {
 		return (
+
 			<div className='profil-container'>
 				<h1>Profile Settings</h1>
-				<h2>{utilisateur.username}</h2>
+				{/* <h2>{utilisateur.username}</h2>
 				<p>{utilisateur.description}</p>
 				<div className='update-container'>
 					<div className='top-part'>
@@ -37,7 +39,7 @@ const Profile = ({utilisateur, refreshState, setRefreshState}) => {
 							</li>
 						</nav>
 					</div>
-				</div>
+				</div> */}
 			</div>
 		);
 	}
