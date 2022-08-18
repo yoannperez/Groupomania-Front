@@ -5,7 +5,7 @@ import banner from "../assets/icon-left-font-monochrome-white.svg";
 import logo from "../assets/icon.svg";
 
 import Login from "../components/login.componentToFunction";
-import Register from "../components/register.component";
+import Register from "../components/Register";
 
 const LoginPage = () => {
   return (
@@ -19,7 +19,6 @@ const LoginPage = () => {
 				</nav>
 				<div>
 					<div className='logContainer'>
-					{/* <Login /> */}
 						<div className='card-container'>
 							<img src={logo} alt='profile-img' className='' />
 							<ul style={{display: "flex", gap: "10px"}}>

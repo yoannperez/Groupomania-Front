@@ -6,7 +6,7 @@ import {login} from "../services/authService";
 import {useStateValue} from "../utils/context/StateProvider";
 import {actionTypes} from "../utils/Reducer/Reducer";
 
-const Login = () => {
+const Register = () => {
 	const {
 		register,
 		handleSubmit,
@@ -22,31 +22,32 @@ const Login = () => {
 	};
 
 	const fetchUser = async ({email, password}) => {
-		try {
-			const {data} = await login(email, password);
-			dispatch({
-				type: actionTypes.SET_USER,
-				user: data,
-			});
-			localStorage.setItem("auth", JSON.stringify(data));
+		// try {
+		// 	const {data} = await login(email, password);
+		// 	dispatch({
+		// 		type: actionTypes.SET_USER,
+		// 		user: data,
+		// 	});
+		// 	localStorage.setItem("auth", JSON.stringify(data));
 			
-			setTimeout(() => {
-				// navigate.push("/")
-				window.location.reload();
-			}, 500);
+		// 	setTimeout(() => {
+		// 		// navigate.push("/")
+		// 		window.location.reload();
+		// 	}, 500);
 
-		} catch (error) {
-			console.log("Something is wrong");
-			const resMessage =
-				(error.response && error.response.data && error.response.data.message) ||
-				error.message ||
-				error.toString();
-			setMessage(resMessage);
-		}
+		// } catch (error) {
+		// 	console.log("Something is wrong");
+		// 	const resMessage =
+		// 		(error.response && error.response.data && error.response.data.message) ||
+		// 		error.message ||
+		// 		error.toString();
+		// 	setMessage(resMessage);
+		// }
 	};
 
 	return (
 		<>
+        Register
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className='form-group'>
 					{/* <label htmlFor='email'>E-mail</label> */}
@@ -81,4 +82,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default Register;

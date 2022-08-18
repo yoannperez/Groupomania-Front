@@ -26,14 +26,14 @@ export async function register(username, email, password) {
  * Logout Function
  */
 export function logout() {
-	localStorage.removeItem("user");
+	localStorage.removeItem("auth");
 }
 
 /**
  * Get curent user from localStorage
  */
 export function getCurrentUser() {
-	return JSON.parse(localStorage.getItem("user"));
+	return JSON.parse(localStorage.getItem("auth"));
 }
 
 

@@ -1,20 +1,22 @@
 import axios from "axios";
 import React, { useState } from "react";
 import authService from "../../services/auth.service";
+import {useStateValue} from "../../utils/context/StateProvider";
 
 const UploadImg = ({utilisateur, refreshState, setRefreshState}) => {
   const userToken = authService.getCurrentUser();
   const [file, setFile] = useState();
+  const [{user, auth}, dispatch] = useStateValue();
 
    const handlePicture = (e) => {
     e.preventDefault();
-
     const data = new FormData();
-
     data.append("image", file);
-    axios.defaults.headers.common["Authorization"] = "Bearer " + userToken.token;
+
+
+    axios.defaults.headers.common["Authorization"] = "Bearer " + auth.token;
     axios
-      .put(process.env.REACT_APP_API_ADRESS + "/api/users/" + utilisateur.id, data, {
+      .put(process.env.REACT_APP_API_ADRESS + "/api/users/" + user.id, data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

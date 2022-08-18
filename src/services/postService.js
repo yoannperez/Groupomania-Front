@@ -1,21 +1,29 @@
 import api, {EndPoints} from "../api/axios";
-// import { SaleType } from '../models/sale-type';
-
-// axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
-// axios.defaults.baseURL = process.env.REACT_APP_API_ADRESS;
 
 const user = localStorage.getItem("user");
 console.log(("fromLocalStorage : ", user));
 
+
+export async function createPostsAxios(post) {
+	// axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
+	return await api.post(EndPoints.posts, post);
+}
+
 export async function getAllPostsAxios() {
 	return await api.get(EndPoints.posts);
 }
-/* Other commonly-used api methods: 
-api.post
-api.put 
-api.delete 
-api.patch
-*/
-/* The < > bracket here is a Generic type that Typescript adapted from OOP. It means that the return value of the getSalesAxios is an array of SaleType.
-This would likewise help us with the TypeScript intell-sense when using it.
-*/
+
+
+/**
+ * UPDATE Post
+ * @param {number} postId Id 
+ * @param {object} post datas to update
+ * @returns 
+ */
+export async function updatePostsAxios(postId, post) {
+	return await api.put(`${EndPoints.posts}/${postId}`, post);
+}
+
+export async function deletePostsAxios(postId) {
+	return await api.delete(`${EndPoints.posts}/${postId}`);
+}

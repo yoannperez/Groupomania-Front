@@ -1,60 +1,50 @@
-import axios from "axios";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import Article from "../components/Article";
+import Post from "../components/Post";
 import NewPost from "../components/NewPost/NewPost";
 import {useStateValue} from "../utils/context/StateProvider";
+import {getAllPostsAxios} from "../services/postService";
 
 const Feed = () => {
 	const history = useNavigate();
-	const [newsData, setNewsData] = useState([]);
-	const [reload, setReload] = useState(false);
+	const [postsData, setPostsData] = useState([]);
+	const [refreshPage, setRefreshPage] = useState(false);
 	const [spinner, setSpinner] = useState(false);
-	const [{user}, dispatch] = useStateValue();
+	const [{user, auth}, dispatch] = useStateValue();
 
 	useEffect(() => {
-		if (user) {
-			setSpinner(true);
-			getData();
-		}
+		setSpinner(true);
+		getData();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [reload]);
+	}, [refreshPage]);
 
-	const getData = () => {
-		axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
-		axios.get(process.env.REACT_APP_API_ADRESS + "/api/posts/").then((res) => {
-			setNewsData(res.data);
-			setSpinner(false);
-		});
+	const getData = async () => {
+		let {data} = await getAllPostsAxios();
+		setPostsData(data);
+		setSpinner(false);
 	};
 
 	const refresh = () => {
-		setReload(!reload);
+		setRefreshPage(!refreshPage);
 	};
 
-	if (!user) {
-		history.push("/");
-		return null;
-	} else {
-		return (
-			<div className='feedContainer'>
-				<h1>Feed</h1>
-				{/* <NewPost user={user} refresh={refresh} />
-				<h1>Derniers articles</h1>
-				{spinner ? (
-					<div className='Loader'></div>
-				) : (
-					<div>
-						{newsData
-							.sort((a, b) => b.id - a.id)
-							.map((post) => (
-								<Article key={post.id} article={post} refresh={refresh} />
-							))}
-					</div>
-				)} */}
-			</div>
-		);
-	}
+	return (
+		<div className='feedContainer'>
+			<NewPost user={user} refresh={refresh} />
+			<h1>Derniers articles</h1>
+			{spinner ? (
+				<div className='Loader'></div>
+			) : (
+				<div>
+					{postsData
+						.sort((a, b) => b.id - a.id)
+						.map((post) => (
+							<Post key={post.id} article={post} refresh={refresh} />
+						))}
+				</div>
+			)}
+		</div>
+	);
 };
 
 export default Feed;

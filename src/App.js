@@ -1,80 +1,95 @@
 // import React and libraries
 import React, {useEffect} from "react";
-import {Routes, Route, Link, NavLink} from "react-router-dom";
+import {Routes, Route, Navigate, Link, NavLink} from "react-router-dom";
 // Import stylesheet
 import "./styles/index.scss";
 // Pages
-// import Home from "./pages/Home";
-// import LoginPage from "./pages/LoginPage";
+import Home from "./pages/Home";
+import LoginPage from "./pages/LoginPage";
+import Profile from "./pages/Profile";
 // State
 import {useStateValue} from "./utils/context/StateProvider";
 import {actionTypes} from "./utils/Reducer/Reducer";
 import {useState} from "react";
-
+import {getUsersAxios} from "./services/userService";
 
 /**
  * Application entry point
  * @returns void
  */
 const App = () => {
+	const [{user, auth}, dispatch] = useStateValue();
+	const [isLoading, setIsLoading] = useState(false);
 
-	const [{user}, dispatch] = useStateValue();
-	const [isLoading, setIsLoading] = useState(true);
-
-	console.log("From App :", user);
+	window.addEventListener("load", (event) => {
+		console.log("page is fully loaded");
+	});
 
 	useEffect(() => {
-		setIsLoading(true);
-		const userDatas = localStorage.getItem("user");
-		if (userDatas) {
-			dispatch({
-				type: actionTypes.SET_USER,
-				user: userDatas,
-			});
+		// setIsLoading(true);
+		// console.log("auth: ", auth);
+		const authDatas = JSON.parse(localStorage.getItem("auth"));
+		// console.log("authDatas: ", authDatas);
+
+		if (authDatas) {
+			getUserDatas(authDatas);
+			storeAuthDatasToStore(authDatas);
+			// console.log("auth: ", auth);
+		} else {
+			// console.log("authDatas is empty");
 		}
-		setIsLoading(false);
-		// console.log("userDatas", userDatas);
+		return;
+		// console.log("useEffect Finished");
+		// setIsLoading(false);
 	}, []);
 
-	// useEffect(() => {
-	// 	const getData = (response, err) => {
-	// 		if (user) {
+	async function getUserDatas(user) {
+		try {
+			// console.log("Start fetching api");
+			await getUsersAxios(user).then(({data}) => {
+				// console.log("Start dispatching user");
+				dispatch({
+					type: actionTypes.SET_USER,
+					user: data.user,
+					// user: {
+					// 	...data.user,
+					// 	imageUrl: data.user.imageUrl.replace(
+					// 		"https://localhost:3001",
+					// 		process.env.REACT_APP_API_ADRESS
+					// 	),
+					// },
+				});
+			});
+			// console.log("Fetch axios user's informations ended");
+			// console.log("datas: ", datas);
+		} catch (error) {
+			console.log(error);
+		}
+	}
 
-	// 			// axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
-	// 			// axios.defaults.baseURL = process.env.REACT_APP_API_ADRESS;
-	// 			axios
-	// 				.get(process.env.REACT_APP_API_ADRESS + "/api/users/" + user.userId)
-	// 				.then((response) => {
-	// 					// saveUser(user);
-	// 					setUtilisateur({
-	// 						...response.data.user,
-	// 						imageUrl: response.data.user.imageUrl.replace(
-	// 							"https://localhost:3001",
-	// 							process.env.REACT_APP_API_ADRESS
-	// 						),
-	// 					});
-	// 				})
-	// 				.catch((err) => Error);
-	// 		}
-	// 	};
-	// 	getData();
-	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	// }, [refreshState]);
-
+	async function storeAuthDatasToStore(data) {
+		dispatch({
+			type: actionTypes.SET_AUTH,
+			auth: data,
+		});
+	}
+	// console.log("APPuser: ", user);
+	// console.log("auth: ", auth);
 	return (
 		<>
-		<h1>main</h1>
 			{/* {isLoading ? (
 				<div className='Loader'></div>
 			) : (
-				<Routes>
-					{user ? (
-						<Route path='*' element={<Home />} />
-					) : (
-						<Route path='*' element={<LoginPage />} />
-					)}
-				</Routes>
-			)} */}
+				
+				
+				)} */}
+			{/* <Navigate to='/home' replace={true} /> : <Navigate to='/login' replace={true} />} */}
+
+			<Routes>
+				{user ? <Route path='*' element={<Home />} /> : <Route path='*' element={<LoginPage />} />}
+				<Route exact path='/profile' element={<Profile />} />
+			</Routes>
+			{/* {user ? <Navigate to='/home' replace={true} /> : <Navigate to='/login' replace={true} />} */}
 		</>
 	);
 };
