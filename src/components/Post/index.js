@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import Comments from "../Comments";
-// import Header from "./Header";
-import {dateParser} from '../../globalFunctions/globalFunctions'
+import {dateParser} from "../../globalFunctions/globalFunctions";
 import {useStateValue} from "../../utils/context/StateProvider";
 import {updatePostsAxios, deletePostsAxios} from "../../services/postService";
 
@@ -10,6 +9,7 @@ const Post = ({article, refresh}) => {
 	const [editedText, setEditedText] = useState("");
 	const [imageUrl, setImageUrl] = useState("");
 	const [{user}, dispatch] = useStateValue();
+	const {User} = article;
 
 	useEffect(() => {
 		if (article.imageUrl) {
@@ -27,7 +27,6 @@ const Post = ({article, refresh}) => {
 		};
 		try {
 			await updatePostsAxios(article.id, data);
-			// console.log("datas: ", datas);
 		} catch (error) {
 			console.log(error);
 		}
@@ -51,14 +50,12 @@ const Post = ({article, refresh}) => {
 		<div
 			className='article'
 			style={{background: isEditing ? "#f3feff" : "white", border: "2px solid white"}}>
-			{/* <Header article={article} /> */}
-
 			<div className='card-header'>
-				<em>
-					Ici ça merde grave ! 
-					{/* Posté le {dateParser(article.createdAt)}, par {article.id} */}
-					{/* Posté le {dateParser(article.createdAt)}, par {article.article.User.username} */}
-				</em>
+				{User ? (
+					<em>
+						Posté le {dateParser(article.createdAt)}, par {User.username}
+					</em>
+				) : null}
 			</div>
 
 			{isEditing ? (

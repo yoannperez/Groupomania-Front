@@ -4,7 +4,7 @@ import {Routes, Route, Link, NavLink} from "react-router-dom";
 import banner from "../assets/icon-left-font-monochrome-white.svg";
 import logo from "../assets/icon.svg";
 
-import Login from "../components/login.componentToFunction";
+import Login from "../components/Login";
 import Register from "../components/Register";
 
 const LoginPage = () => {

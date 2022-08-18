@@ -5,7 +5,6 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import {StateProvider} from "./utils/context/StateProvider";
 import reducer, {initialState} from "./utils/Reducer/Reducer";
-import Routing from "./routes";
 
 /**
  * Main file

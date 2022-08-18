@@ -4,8 +4,8 @@ import api, { EndPoints } from '../api/axios';
  * User's Services
  */
 
-const user = localStorage.getItem('user')
-console.log(('fromLocalStorage : ', user));
+// const user = localStorage.getItem('user')
+// console.log(('fromLocalStorage : ', user));
 
 /**
  * Get user's information with his id
@@ -27,7 +27,7 @@ export async function updateUsersAxios(user, data) {
  *
  */
 export async function deleteUsersAxios(user) {  
-  console.log("axios user: ", user);
+  // console.log("axios user: ", user);
   api.defaults.headers.common["Authorization"] = "Bearer " + user.token
   return await api.delete(`${EndPoints.users}/${user.userId}`);
 }

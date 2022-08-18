@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import Post from "../components/Post";
-import NewPost from "../components/NewPost/NewPost";
+import Post from "./Post";
+import NewPost from "./NewPost/";
 import {useStateValue} from "../utils/context/StateProvider";
 import {getAllPostsAxios} from "../services/postService";
 

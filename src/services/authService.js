@@ -8,13 +8,13 @@ import api, {EndPoints} from "../api/axios";
  * Login Function
  */
 export async function login(email, password) {
-	return await api.post(`${EndPoints.auth}/signin`, {email, password})
+	return await api.post(`${EndPoints.auth}/signin`, {email, password});
 }
 
 /**
  * Register Function
  */
-export async function register(username, email, password) {
+export async function registerUser({username, email, password}) {
 	return await api.post(`${EndPoints.auth}/signup`, {
 		username,
 		email,
@@ -35,9 +35,6 @@ export function logout() {
 export function getCurrentUser() {
 	return JSON.parse(localStorage.getItem("auth"));
 }
-
-
-
 
 // axios.defaults.headers.common["Authorization"] = "Bearer " + user.token;
 // axios.defaults.baseURL = process.env.REACT_APP_API_ADRESS;

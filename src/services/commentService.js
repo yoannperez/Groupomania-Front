@@ -4,8 +4,8 @@ import api, {EndPoints} from "../api/axios";
  * User's Services
  */
 
-const user = localStorage.getItem("user");
-console.log(("fromLocalStorage : ", user));
+// const user = localStorage.getItem("user");
+// console.log(("fromLocalStorage : ", user));
 
 export async function createCommentAxios(datas) {
 	//   api.defaults.headers.common["Authorization"] = "Bearer " + user.token

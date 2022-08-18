@@ -31,9 +31,8 @@ const Login = () => {
 			localStorage.setItem("auth", JSON.stringify(data));
 			
 			setTimeout(() => {
-				// navigate.push("/")
 				window.location.reload();
-			}, 500);
+			}, 1000);
 
 		} catch (error) {
 			console.log("Something is wrong");

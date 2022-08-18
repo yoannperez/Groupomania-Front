@@ -1,7 +1,7 @@
 import api, {EndPoints} from "../api/axios";
 
-const user = localStorage.getItem("user");
-console.log(("fromLocalStorage : ", user));
+// const user = localStorage.getItem("user");
+// console.log(("fromLocalStorage : ", user));
 
 
 export async function createPostsAxios(post) {

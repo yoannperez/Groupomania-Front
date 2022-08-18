@@ -2,17 +2,12 @@ import React, {useState} from "react";
 import {dateParser} from "../../globalFunctions/globalFunctions";
 import {useStateValue} from "../../utils/context/StateProvider";
 import {updateCommentAxios, deleteCommentAxios} from "../../services/commentService";
-import { useEffect } from "react";
 
 const CommentComponent = ({comment, refreshComment}) => {
 	const {id, commentaire, createdAt, updatedAt, UserId, User} = comment;
 	const [isEditing, setIsEditing] = useState(false);
 	const [editedText, setEditedText] = useState("");
 	const [{user}, dispatch] = useStateValue();
-
-	useEffect(()=>{
-		console.log("Comment: ", comment);
-	}, [])
 
 	const handleEdit = () => {
 		const data = {

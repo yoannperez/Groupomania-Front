@@ -48,8 +48,8 @@ const Profile = ({utilisateur, refreshState, setRefreshState}) => {
 						}
 					);
 					setTimeout(() => {
-						navigate('/')
-						window.location.reload();
+						navigate("/");
+						// window.location.reload();
 					}, 800);
 				});
 			} catch (error) {
