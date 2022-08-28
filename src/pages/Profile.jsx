@@ -81,7 +81,7 @@ const Profile = ({utilisateur, refreshState, setRefreshState}) => {
 					<img src={user.imageUrl} alt='user profile avatar'></img>
 
 					<form action='' onSubmit={updateProfile} className='upload-pic'>
-						<label htmlFor='file'>Changer l'image</label>
+						<label htmlFor='file'>Charger l'image</label>
 						<input
 							className='inputfile'
 							type='file'

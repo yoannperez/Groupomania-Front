@@ -13,9 +13,11 @@ import {useStateValue} from "./utils/context/StateProvider";
 import {actionTypes} from "./utils/Reducer/Reducer";
 import {getUsersAxios} from "./services/userService";
 
+
 /**
  * Application entry point
- * @returns void
+ * @example
+ * <APP />
  */
 const App = () => {
 	const [{user, auth}, dispatch] = useStateValue();

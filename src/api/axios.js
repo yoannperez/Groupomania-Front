@@ -7,8 +7,6 @@ requests*/
 
 const api = axios.create({
 	baseURL: process.env.REACT_APP_API_ADRESS + "/api/",
-	// headers: {
-    //     "Access-Control-Allow-Origin": "*"},
 });
 
 export default api;

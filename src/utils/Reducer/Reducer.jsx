@@ -9,6 +9,12 @@ export const actionTypes = {
 	SET_USER: "SET_USER"
 };
 
+/**
+ * App Reducer
+ * @param {*} state 
+ * @param {*} action 
+ * @returns 
+ */
 const reducer = (state, action) => {
 	// console.log("From Reducer: ", action);
 	switch (action.type) {
