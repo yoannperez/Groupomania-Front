@@ -18,7 +18,7 @@ cd /frontend
 
 Dans le fichier .env, il sera necessaire de vérifier l'adresse de l'API :
 ```
-REACT_APP_API_ADRESS=http://localhost:3000
+REACT_APP_API_ADRESS=https://localhost:3001
 ```
 Si le backend n'utilise pas le port par défaut (3000) a changé de port, il faudra modifier ici en conséquences.
 

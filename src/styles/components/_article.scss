@@ -1,62 +1,67 @@
 .article {
-  margin: 10px auto;
-  background: white;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  padding: 15px;
+	margin: 10px auto;
+	background: white;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+	padding: 15px;
 
-  .articleflex {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .postPhoto {
-    width: 60%;
-    margin: 0 20%;
-  }
-  .flexParaf {
-    width: 100%;
-  }
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    margin: 5px 0 10px;
-    border-bottom: 1px solid $groupomania-red;
-    em {
-      font-size: 0.8rem;
-    }
-  }
-  p {
-    padding: 0.5em 0.3em;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    background-color: $color-2;
-  }
-  textarea {
-    width: 100%;
-    resize: none;
-    height: 70px;
-    outline: none;
-  }
-  .btn-container {
-    border-bottom: 1px solid $groupomania-blue;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin: 10px 0 5px;
+	.articleflex {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.postPhoto {
+		width: 60%;
+		margin: 0 20%;
+		margin-top: 5px;
+	}
+	.flexParaf {
+		width: 100%;
+	}
+	.card-header {
+		display: flex;
+		justify-content: space-between;
+		margin: 5px 0 10px;
+		border-bottom: 1px solid $groupomania-red;
+		em {
+			font-size: 0.8rem;
+		}
+	}
+	p {
+		padding: 0.5em 0.3em;
+		border-radius: 10px;
+		font-size: 0.9rem;
+		background-color: $color-2;
+	}
+	textarea {
+		width: 100%;
+		resize: none;
+		height: 70px;
+		outline: none;
+	}
+	.btn-container {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		align-content: center;
+		margin: 10px 5px;
+		padding-bottom: 5px;
 
-    button {
-      width: 70px;
-      height: 20px;
-      padding: 0px auto;
-      font-size: 0.7rem;
-      border-radius: 15px;
-      margin: 0 2px;
-      cursor: pointer;
+		button {
+			width: max-content;
+			height: 20px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: .5em;
+			font-size: 0.7rem;
+			border-radius: 15px;
+			margin: 0 2px;
+			cursor: pointer;
 
-      &:hover {
-        filter: brightness(110%);
-      }
-    }
-  }
+			&:hover {
+				filter: brightness(110%);
+			}
+		}
+	}
 }

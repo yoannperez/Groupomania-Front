@@ -1,0 +1,22 @@
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.Loader {
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30vh;
+    border: 6px solid #062c53;
+    border-bottom-color: transparent;
+    border-radius: 22px;
+    animation: rotate 1s infinite linear;
+    height: 0;
+    width: 0;
+}
