@@ -1,16 +1,19 @@
 import axios from "axios";
-/*create an instance of axios with a default base URI when sending HTTP
-requests*/
-/*JSON Server has CORS Policy by default*/
 
 
 
+/**
+ * Create axios instance
+ */
 const api = axios.create({
 	baseURL: process.env.REACT_APP_API_ADRESS + "/api/",
 });
 
 export default api;
 
+/**
+ * Endpoints used to fetch api
+ */
 export const EndPoints = {
 	auth: "auth",
 	users: "users",

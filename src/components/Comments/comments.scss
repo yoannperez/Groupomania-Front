@@ -1,0 +1,31 @@
+.centerComment {
+	align-items: center;
+}
+
+.comment__wrapper{
+    margin: 0 10%;
+}
+
+.comment__Container {
+	display: "flex";
+	width: "100%";
+	background-color: #f8f8f8;
+	margin-bottom: 5px;
+    justify-content: flex-end;
+    padding:.3em;
+    border-radius: 5px;
+
+	.comment__msg-tools {
+		display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 12px;
+        margin-top: 10px;
+        
+	}
+
+	.comment__date-username {
+		font-size: 12px;
+        line-height: 0.5em;
+	}
+}

@@ -13,6 +13,7 @@
 	.postPhoto {
 		width: 60%;
 		margin: 0 20%;
+		margin-top: 5px;
 	}
 	.flexParaf {
 		width: 100%;
@@ -39,19 +40,20 @@
 		outline: none;
 	}
 	.btn-container {
-		border-bottom: 1px solid $groupomania-blue;
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
 		align-content: center;
-		gap: 10px;
 		margin: 10px 5px;
 		padding-bottom: 5px;
 
 		button {
-			width: 70px;
+			width: max-content;
 			height: 20px;
-			padding: 0px auto;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: .5em;
 			font-size: 0.7rem;
 			border-radius: 15px;
 			margin: 0 2px;

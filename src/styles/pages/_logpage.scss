@@ -55,7 +55,6 @@
 	flex-direction: column;
 	padding-top: 0.5em;
 
-
 	input {
 		font-size: 18px;
 		line-height: 2em;
@@ -87,11 +86,12 @@
 	padding: 0.8em;
 }
 
+
 .alert {
-	position:absolute;
+	position: absolute;
 	text-align: center;
-  bottom: 0;
-  left:0px;
+	bottom: 0;
+	left: 0px;
 	padding: 0rem 0.3rem;
 	border: 1px solid transparent;
 	border-radius: 0.25rem;

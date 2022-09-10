@@ -3,13 +3,15 @@ import {Link, useNavigate} from "react-router-dom";
 import {useStateValue} from "../utils/context/StateProvider";
 import {updateUsersAxios, getUsersAxios, deleteUsersAxios} from "../services/userService";
 import {actionTypes} from "../utils/Reducer/Reducer";
+import ImagePreview from "../components/ImagePreview/ImagePreview";
+import Navigation from "../components/Navigation";
 
 const Profile = ({utilisateur, refreshState, setRefreshState}) => {
 	const [{user, auth}, dispatch] = useStateValue();
 	const [file, setFile] = useState();
 	const navigate = useNavigate();
 
-	console.log(user.id);
+	console.log(user);
 
 	const updateProfile = (e) => {
 		e.preventDefault();
@@ -72,48 +74,52 @@ const Profile = ({utilisateur, refreshState, setRefreshState}) => {
 	}
 
 	return (
-		<div className='profil-container'>
-			<h1>Profile Settings</h1>
-			<h2>{user.username}</h2>
-			<p>{user.description}</p>
-			<div className='update-container'>
-				<div className='top-part'>
-					<img src={user.imageUrl} alt='user profile avatar'></img>
+		<>
+			<Navigation user={user} />
+			<div className='profil-container'>
+				<h1>Profile Settings</h1>
+				<h2>{user.username}</h2>
+				<p>{user.description}</p>
+				<div className='update-container'>
+					<div className='top-part'>
+						<img className='roundImage' src={user.imageUrl} alt='user profile avatar'></img>
 
-					<form action='' onSubmit={updateProfile} className='upload-pic'>
-						<label htmlFor='file'>Charger l'image</label>
-						<input
-							className='inputfile'
-							type='file'
-							id='file'
-							name='file'
-							accept='.jpg, .jpeg, .png'
-							onChange={(e) => {
-								setFile(e.target.files[0]);
-							}}></input>
-						<br />
-						<input type='submit' value='Envoyer' />
-					</form>
+						<form action='' onSubmit={updateProfile} className='upload-pic'>
+							<label htmlFor='file'>Changer l'image</label>
+							<input
+								className='inputfile'
+								type='file'
+								id='file'
+								name='file'
+								accept='.jpg, .jpeg, .png'
+								onChange={(e) => {
+									setFile(e.target.files[0]);
+								}}></input>
+							<br />
+							<ImagePreview image={file} />
+							<input type='submit' value='Envoyer' />
+						</form>
 
-					{!user.isAdmin && (
-						<button
-							onClick={() => {
-								handleDeleteUser();
-							}}>
-							Supprimer le profil
-						</button>
-					)}
+						{!user.isAdmin && (
+							<button
+								onClick={() => {
+									handleDeleteUser();
+								}}>
+								Supprimer le profil
+							</button>
+						)}
 
-					<nav>
-						<li className='nav-item'>
-							<Link to='/'>
-								<button className='btn btn-primary btn-block'>x FERMER x</button>
-							</Link>
-						</li>
-					</nav>
+						<nav>
+							<li className='nav-item'>
+								<Link to='/'>
+									<button title="Fermer"className='btn btn-primary btn-block btn-close'>X</button>
+								</Link>
+							</li>
+						</nav>
+					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

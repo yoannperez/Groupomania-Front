@@ -15,21 +15,22 @@ const Register = () => {
 	const [message, setMessage] = useState("");
 
 	const onSubmit = (credentials) => {
-		try {
-			registerUser(credentials).then((res) => {
+		registerUser(credentials)
+			.then((res) => {
 				console.log(res);
-				setMessage(`${res.data.message}, Veuillez vous connecter`)
-				// navigate("/")
+				setMessage(`${res.data.message}, Veuillez vous connecter`);
+				navigate("/");
+			})
+			.catch((err) => {
+				console.log("err", err.response.data.message);
+				setMessage(err.response.data.message);
 			});
-		} catch (error) {}
 	};
 
 	return (
 		<>
-			Register
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className='form-group'>
-					{/* <label htmlFor='email'>E-mail</label> */}
 					<input
 						type='email'
 						placeholder='Email'

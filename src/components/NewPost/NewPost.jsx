@@ -1,27 +1,15 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useStateValue} from "../../utils/context/StateProvider";
 import {createPostsAxios} from "../../services/postService";
+import ImagePreview from "../ImagePreview/ImagePreview";
 
 const NewPost = ({refresh}) => {
 	const [content, setTextData] = useState("");
 	const [error, setError] = useState(false);
 	const [editPost, setEditPost] = useState(false);
-	const [preview, setPreview] = useState("");
+
 	const [image, setImage] = useState();
 	const [{user, auth}, dispatch] = useStateValue();
-
-	useEffect(() => {
-		if (image) {
-			const reader = new FileReader();
-			reader.onloadend = () => {
-				setPreview(reader.result);
-			};
-			reader.readAsDataURL(image);
-		} else {
-			setPreview(null);
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [image]);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -87,9 +75,7 @@ const NewPost = ({refresh}) => {
 						}
 					}}></input>
 			</form>
-			<div className='preview'>
-				<img className='preview__img' src={preview} alt='' />
-			</div>
+			<ImagePreview image={image}/>
 			<hr />
 			<p
 				onClick={(e) => {

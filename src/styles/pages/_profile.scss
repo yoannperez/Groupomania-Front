@@ -1,89 +1,58 @@
 .profil-container {
-  min-width: 350px;
-  height: fit-content;
-  display: flex;
-  margin: 2em 10px;
-  padding: 2em;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-
-  border: 2px solid $groupomania-blue;
-  border-radius: 15px;
-  & form {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    gap:5px;
-
-    
-    .inputfile{
-        border: 1px solid #ccc;
-        display: inline-block;
-        padding: 6px 12px;
-        cursor: pointer;
-    }
-  }
+	min-width: 350px;
+	height: fit-content;
+	display: flex;
+	margin: 2em 10px;
+	padding: 2em;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
+	background-color: white;
+	border-radius: 5px;
+	& form {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		align-content: center;
+		gap: 5px;
+		.inputfile {
+			border: 1px solid #ccc;
+			display: inline-block;
+			padding: 6px 12px;
+			cursor: pointer;
+		}
+	}
 }
-///////////////////////
-label.label input[type="file"] {
-  position: absolute;
-  top: -1000px;
-}
-.label {
-  cursor: pointer;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  padding: 5px 15px;
-  margin: 5px;
-  background: #dddddd;
-  display: inline-block;
-}
-.label:hover {
-  background: #5cbd95;
-}
-.label:active {
-  background: #9fa1a0;
-}
-.label:invalid+span {
-  color: #000000;
-}
-.label:valid+span {
-  color: #ffffff;
-}
-
-///////////////////////
-
 
 .update-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  & img {
-    width: 150px;
-    height: 150px;
-    margin: 20px auto;
-    object-position: center;
-    object-fit: cover;
-    border-radius: 300px;
-  }
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
+}
+
+img.roundImage {
+	width: 150px;
+	height: 150px;
+	margin: 20px auto;
+	object-position: center;
+	object-fit: cover;
+	border-radius: 300px;
 }
 
 .top-part {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
 }
 
 .upload-pic {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 20px;
 }

@@ -38,17 +38,19 @@ const CommentComponent = ({comment, refreshComment}) => {
 	};
 
 	return (
-		<div style={{display: "flex", width: "100%"}}>
-			<div style={{width: "100%", display: "flex", flexDirection: "column"}}>
-				{isEditing ? (
-					<textarea
-						onChange={(e) => setEditedText(e.target.value)}
-						autoFocus
-						defaultValue={editedText ? editedText : commentaire}></textarea>
-				) : (
-					<p>{editedText ? editedText : commentaire}</p>
-				)}
-				<div style={{display: "flex", flexDirection: "row", gap: "10px", alignItems: "bottom"}}>
+		<div className='comment__Container'>
+			{isEditing ? (
+				<textarea
+					className='comment__msg'
+					onChange={(e) => setEditedText(e.target.value)}
+					autoFocus
+					defaultValue={editedText ? editedText : commentaire}></textarea>
+			) : (
+				<p>{editedText ? editedText : commentaire}</p>
+			)}
+
+			<div className='comment__msg-tools'>
+				<div className='comment__date-username'>
 					<em>
 						Le {dateParser(updatedAt)}, par {User.username}
 					</em>
@@ -61,7 +63,6 @@ const CommentComponent = ({comment, refreshComment}) => {
 						) : (
 							<button onClick={() => setIsEditing(true)}>Edit</button>
 						)}
-						{/* <DeleteComment id={comment.comment.id} /> */}
 						<button onClick={handleDelete}>Supprimer</button>
 					</div>
 				) : null}

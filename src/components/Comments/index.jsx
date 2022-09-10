@@ -4,8 +4,10 @@ import {useStateValue} from "../../utils/context/StateProvider";
 import {createCommentAxios, getCommentAxios} from "../../services/commentService";
 
 import CommentComponent from "./Comment-component";
+import './comments.scss'
 
-const Comments = ({id}) => {
+const Comments = (props) => {
+	const {id} = props
 	const [{user, auth}, dispatch] = useStateValue();
 	const [commentData, setcommentData] = useState([]);
 	const [content, setTextData] = useState("");
@@ -45,16 +47,15 @@ const Comments = ({id}) => {
 	};
 
 	return (
-		<div style={{border: "2px solid white"}}>
-			<div>
-				<header>Commentaires</header>
+		<div >
+			<div className="comment__wrapper">
+				<h2>Commentaires</h2>
 				{commentData
-					// .sort((a, b) => b.id - a.id)
 					.map((comment) => (
 						<CommentComponent key={comment.id} comment={comment} refreshComment={refreshComment} />
 					))}
 			</div>
-			<form onSubmit={(e) => handleSubmit(e)}>
+			<form className="centerComment" onSubmit={(e) => handleSubmit(e)}>
 				<textarea
 					style={{border: error ? "1px solid red" : "1px solid #61dafb"}}
 					onChange={(e) => setTextData(e.target.value)}

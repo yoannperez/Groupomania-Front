@@ -1,5 +1,6 @@
-import Comments from ".";
-import {render} from "@testing-library/react";
+import Comments from "./index";
+import {render} from "../../utils/test";
+
 
 describe("Comments", () => {
 	test("Should render without crash", async () => {
